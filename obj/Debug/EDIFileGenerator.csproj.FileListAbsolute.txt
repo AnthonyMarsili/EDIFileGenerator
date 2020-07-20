@@ -1,0 +1,10 @@
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\bin\Debug\EDIFileGenerator.exe.config
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\bin\Debug\EDIFileGenerator.exe
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\bin\Debug\EDIFileGenerator.pdb
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.csprojAssemblyReference.cache
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.Form1.resources
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.Properties.Resources.resources
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.csproj.GenerateResource.cache
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.csproj.CoreCompileInputs.cache
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.exe
+C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.pdb
