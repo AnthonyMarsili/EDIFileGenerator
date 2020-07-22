@@ -57,21 +57,25 @@ namespace EDIFileGenerator
 
         private String TopEnvelopeFlipper(List<String> inEnvelope) {
             String outEnvelope = "";
-            String sender = inEnvelope[7];
-            String reciever = inEnvelope[9];
+            String sender = inEnvelope[6];
+            String reciever = inEnvelope[8];
+            int inEnvLen = inEnvelope.Count; // this line helps with swapping
 
             //First 6 segments stay the same
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < inEnvLen; i++)
             {
-                outEnvelope += inEnvelope[0];
+                if (i == 6) // these two if statements do the swapping
+                    outEnvelope += reciever;
+                else if (i == 8)
+                    outEnvelope += sender;
+                else
+                    outEnvelope += inEnvelope[0];
+                
                 outEnvelope += "*";
                 inEnvelope.RemoveAt(0);
             }
 
-
-
-
-            outEnvelope = inEnvelope[0];
+            //outEnvelope = inEnvelope[0]; not sure what this did so i commented it out
             return outEnvelope;
         }
 
@@ -91,7 +95,7 @@ namespace EDIFileGenerator
             //Split all the words based on the value "|" or "*"
             words = WholeTextParse(inputText);
            
-            for (int i = 0; i < 32; i++) {
+            for (int i = 0; i < words.Count; i++) {
                 envelope.Add(words[i]);
             }
 
