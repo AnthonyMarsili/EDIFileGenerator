@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,8 +16,15 @@ namespace EDIFileGenerator
         public Form1()
         {
             InitializeComponent();
-
+          
         }
+
+        public static class Globals {
+            public static String outputText = "";
+        }
+
+
+
 
         private List<String> WholeTextParse(String text)
         {
@@ -55,28 +63,59 @@ namespace EDIFileGenerator
             return words;
         }
 
-        private String TopEnvelopeFlipper(List<String> inEnvelope) {
-            String outEnvelope = "";
-            String sender = inEnvelope[6];
-            String reciever = inEnvelope[8];
-            int inEnvLen = inEnvelope.Count; // this line helps with swapping
-
-            //First 6 segments stay the same
-            for (int i = 0; i < inEnvLen; i++)
+        private void PutBackTogether(List<String> inputList) {
+            //Put all the words back together with proper delimiters 
+            String output = "";
+            int counter = 0;
+            int length = inputList.Count;
+            while (counter < length)
             {
-                if (i == 6) // these two if statements do the swapping
-                    outEnvelope += reciever;
-                else if (i == 8)
-                    outEnvelope += sender;
+                if (inputList[1] == "~")
+                {
+                    output += inputList[0] + "~\r\n";
+                    inputList.RemoveAt(0);
+                    inputList.RemoveAt(0);
+                    counter++;
+                    counter++;
+                }
                 else
-                    outEnvelope += inEnvelope[0];
-                
-                outEnvelope += "*";
-                inEnvelope.RemoveAt(0);
+                {
+                    output += inputList[0];
+                    output += "*";
+                    inputList.RemoveAt(0);
+                    counter++;
+                }
+
             }
 
-            //outEnvelope = inEnvelope[0]; not sure what this did so i commented it out
-            return outEnvelope;
+            Globals.outputText += output;
+
+        }
+
+        private void TopEnvelopeFlipper(List<String> inEnvelope) {
+            String temp = inEnvelope[6];
+            inEnvelope[6] = inEnvelope[8];
+            inEnvelope[8] = temp;
+
+            temp = inEnvelope[20];
+            inEnvelope[20] = inEnvelope[21];
+            inEnvelope[21] = temp;
+
+            PutBackTogether(inEnvelope);
+
+            //First 6 segments stay the same
+            //for (int i = 0; i < inEnvLen; i++)
+            //{
+            //    if (i == 6) // these two if statements do the swapping
+            //        outEnvelope += reciever;
+            //    else if (i == 8)
+            //        outEnvelope += sender;
+            //    else
+            //        outEnvelope += inEnvelope[0];
+                
+            //    outEnvelope += "*";
+            //    inEnvelope.RemoveAt(0);
+            //}
         }
 
         private void ConvertButton_Click(object sender, EventArgs e)
@@ -95,36 +134,14 @@ namespace EDIFileGenerator
             //Split all the words based on the value "|" or "*"
             words = WholeTextParse(inputText);
            
+            //Change word count to be the size of the envelope
             for (int i = 0; i < words.Count; i++) {
                 envelope.Add(words[i]);
             }
 
-            outputText = TopEnvelopeFlipper(envelope);
+            TopEnvelopeFlipper(envelope);
 
-
-
-            //Put all the words back together
-            counter = 0;
-            length = words.Count;
-            while (counter < length) {
-                if (words[1] == "~")
-                {
-                    outputText += words[0] + "~\r\n";
-                    words.RemoveAt(0);
-                    words.RemoveAt(0);
-                    counter++;
-                    counter++;
-                }
-                else {
-                    outputText += words[0];
-                    outputText += "*";
-                    words.RemoveAt(0);
-                    counter++;
-                }
-                
-            }
-
-            OutputBox.Text = outputText;
+            OutputBox.Text = Globals.outputText;
         }
     }
 }
