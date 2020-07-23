@@ -89,35 +89,71 @@ namespace EDIFileGenerator
 
         }
 
-        private void TopEnvelopeFlipper(List<String> inEnvelope) {
+        private void Engine(List<String> words) {
+            List<String> envelope = new List<String>();
+            List<String> bottomEnvVals;
+            int SE01;
+
+            // 32 is the size of the envelope
+            for (int i = 0; i < 32; i++)
+            {
+                envelope.Add(words[0]);
+                words.RemoveAt(0);
+            }
+
+            bottomEnvVals = topEnvelopeMaker(envelope);
+
+            SE01 = ReceivingAdviceMaker(words);
+
+            bottomEnvVals.Insert(0, SE01.ToString());
+
+            bottomEnvelopeMaker(bottomEnvVals);
+        }
+
+        private List<String> topEnvelopeMaker(List<String> envelope) {
+            List<String> bottomEnvVals = new List<String>();
+
             // swaps sender and receiver on ISA and GS
-            String temp = inEnvelope[6];
-            inEnvelope[6] = inEnvelope[8];
-            inEnvelope[8] = temp;
-            temp = inEnvelope[20];
-            inEnvelope[20] = inEnvelope[21];
-            inEnvelope[21] = temp;
+            String temp = envelope[6];
+            envelope[6] = envelope[8];
+            envelope[8] = temp;
+            temp = envelope[20];
+            envelope[20] = envelope[21];
+            envelope[21] = temp;
 
             // gets current date and puts in ISA and GS
             String today = DateTime.Now.ToString("yyMMdd");
-            inEnvelope[9] = today;
-            inEnvelope[22] = "20" + today;
+            envelope[9] = today;
+            envelope[22] = "20" + today;
 
             // gets current time and puts in ISA and GS
-            String time = DateTime.Now.ToString("hhmm");
-            inEnvelope[10] = time;
-            inEnvelope[23] = time;
+            String time = DateTime.Now.ToString("HHmm");
+            envelope[10] = time;
+            envelope[23] = time;
 
             // makes the output be an RC
             // HARDCODED for now but will change based on user dropdown input
-            inEnvelope[19] = "RC";
-            inEnvelope[29] = "861";
+            envelope[19] = "RC";
+            envelope[29] = "861";
 
-            Globals.outputText += PutBackTogether(inEnvelope);
+            // storing values for bottom envelope
+            bottomEnvVals.Add(envelope[30]); // SE02
+            bottomEnvVals.Add(envelope[24]); // GE02
+            bottomEnvVals.Add(envelope[13].TrimStart('0')); // IEA02
+
+            Globals.outputText += PutBackTogether(envelope);
+
+            return bottomEnvVals;
         }
 
-        private void ReceivingAdviceMaker(List<String> segments) {
-            int count = 0;
+        private void bottomEnvelopeMaker(List<String> bottomEnvVals) {
+            Globals.outputText += "SE*" + bottomEnvVals[0] + "*" + bottomEnvVals[1] + "~\r\n";
+            Globals.outputText += "GE*1*" + bottomEnvVals[2] + "~\r\n";
+            Globals.outputText += "IEA*1*" + bottomEnvVals[3] + "~\r\n";
+        }
+        
+        private int ReceivingAdviceMaker(List<String> segments) {
+            int SEcount = 0;
             String asnNum = segments[2];
 
             // builds the BRA
@@ -127,14 +163,6 @@ namespace EDIFileGenerator
             Globals.outputText += "REF*SI*" + asnNum + "~\r\n";
             // builds the DTM
             Globals.outputText += "DTM*999" + "*20" + DateTime.Now.ToString("yyMMdd") + "~\r\n";
-
-            //loop through segments list
-            // delete everything until you get to a tilde
-            // if the next string is not PRF, delete everything until you get to a tilde
-            // if it is PRF, grab segments[1] and that is your PO number
-            // then delete that PRF and everything until you get to a tilde
-            // if the next string is not LIN, keep deleting
-            // if it is, exit loop
 
             int lineCount = 0;
             String tempLIN;
@@ -149,8 +177,9 @@ namespace EDIFileGenerator
                     else if (segments[1] == "LIN") {
                         lineCount++;
                         tempLIN = PutBackTogether(segments.GetRange(1, 7));
-                        tempQty = segments[9];
-                        Globals.outputText += "RCD**" + tempQty + "*ST~\r\n" + tempLIN + "PRF*" + poNum + "~\r\n";
+                        tempQty = segments[10];
+                        Globals.outputText += "RCD**" + tempQty + "*ST~\r\n";
+                        Globals.outputText += tempLIN + "PRF*" + poNum + "~\r\n";
                     }
                     segments.RemoveAt(0);
                 }
@@ -159,39 +188,21 @@ namespace EDIFileGenerator
                 }
             }
 
-            // now segments starts at first LIN and we have the po Num
-            
+            Globals.outputText += "CTT*" + lineCount.ToString() + "~\r\n";
+
+            SEcount = lineCount * 3 + 6; // this is the complex forumla we deduced for the se01
+
+            return SEcount;        
         }
 
         private void ConvertButton_Click(object sender, EventArgs e)
         {
-            //OutputBox.Text = "";
-            Globals.outputText = "";
-            //InputBox.AppendText("Test");
-            String inputText = "";
-            String outputText = "";
-            List<String> words = new List<String>();
-            List<String> envelope = new List<String>();
-            int length = 0;
-            int counter = 0;
-            
-            inputText = InputBox.Text;
+            List<String> words;
 
             //Split all the words based on the value "|" or "*"
-            words = WholeTextParse(inputText);
-           
-            // 32 is the size of the envelope
-            for (int i = 0; i < 32; i++) 
-            {
-                envelope.Add(words[0]);
-                words.RemoveAt(0);
-            }
+            words = WholeTextParse(InputBox.Text);
 
-            TopEnvelopeFlipper(envelope);
-
-            // now "words" contains everything after the top envelope
-
-            ReceivingAdviceMaker(words);
+            Engine(words);
 
             OutputBox.Text = Globals.outputText;
         }
