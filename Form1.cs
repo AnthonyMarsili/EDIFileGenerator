@@ -108,8 +108,9 @@ namespace EDIFileGenerator
                 }
             }
             catch (Exception e)
-            { 
+            {
                 Globals.outputText = "Please ensure your ASN is in the proper format.";
+                OutputBox.ForeColor = Color.Red;
                 flag = false;
             }
 
@@ -221,6 +222,9 @@ namespace EDIFileGenerator
             Engine(words);
 
             OutputBox.Text = Globals.outputText;
+
+            
+
         }
 
         private void Copy_Click(object sender, EventArgs e)
@@ -230,6 +234,7 @@ namespace EDIFileGenerator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            OutputBox.BackColor = Color.LightGray;
 
         }
 
