@@ -198,6 +198,7 @@ namespace EDIFileGenerator
         private void ConvertButton_Click(object sender, EventArgs e)
         {
             List<String> words;
+            Globals.outputText = "";
 
             //Split all the words based on the value "|" or "*"
             words = WholeTextParse(InputBox.Text);
@@ -206,5 +207,36 @@ namespace EDIFileGenerator
 
             OutputBox.Text = Globals.outputText;
         }
+
+        private void Copy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(OutputBox.Text);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OutputBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ASNLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void AdviceLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
