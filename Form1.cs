@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,22 +93,36 @@ namespace EDIFileGenerator
         private void Engine(List<String> words) {
             List<String> envelope = new List<String>();
             List<String> bottomEnvVals;
+            Boolean flag = true;
+
             int SE01;
 
-            // 32 is the size of the envelope
-            for (int i = 0; i < 32; i++)
+            try
             {
-                envelope.Add(words[0]);
-                words.RemoveAt(0);
+
+                // 32 is the size of the envelope
+                for (int i = 0; i < 32; i++)
+                {
+                    envelope.Add(words[0]);
+                    words.RemoveAt(0);
+                }
+            }
+            catch (Exception e)
+            { 
+                Globals.outputText = "Please ensure your ASN is in the proper format.";
+                flag = false;
             }
 
-            bottomEnvVals = topEnvelopeMaker(envelope);
+            if (flag)
+            {
+                bottomEnvVals = topEnvelopeMaker(envelope);
 
-            SE01 = ReceivingAdviceMaker(words);
+                SE01 = ReceivingAdviceMaker(words);
 
-            bottomEnvVals.Insert(0, SE01.ToString());
+                bottomEnvVals.Insert(0, SE01.ToString());
 
-            bottomEnvelopeMaker(bottomEnvVals);
+                bottomEnvelopeMaker(bottomEnvVals);
+            }
         }
 
         private List<String> topEnvelopeMaker(List<String> envelope) {
