@@ -18,3 +18,4 @@ C:\Users\mars1\Documents\Career\SideProjects\EDIFileGenerator\obj\Debug\EDIFileG
 C:\Users\mars1\Documents\Career\SideProjects\EDIFileGenerator\obj\Debug\EDIFileGenerator.csproj.CoreCompileInputs.cache
 C:\Users\mars1\Documents\Career\SideProjects\EDIFileGenerator\obj\Debug\EDIFileGenerator.exe
 C:\Users\mars1\Documents\Career\SideProjects\EDIFileGenerator\obj\Debug\EDIFileGenerator.pdb
+C:\Users\mars1\Documents\Career\SideProjects\EDIFileGenerator\obj\Debug\EDIFileGenerator.Form2.resources
