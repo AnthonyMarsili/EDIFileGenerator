@@ -236,6 +236,11 @@ namespace EDIFileGenerator
             InputBox.Text = "";
             OutputBox.Text = "";
         }
+
+        private void Copy_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

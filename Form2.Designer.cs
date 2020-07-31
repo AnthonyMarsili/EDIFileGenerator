@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.CreatePOButton = new System.Windows.Forms.Button();
-            this.POOptionsLabel = new System.Windows.Forms.Label();
             this.POOutputLabel = new System.Windows.Forms.Label();
             this.POOutputBox = new System.Windows.Forms.TextBox();
             this.Clear = new System.Windows.Forms.Button();
@@ -52,19 +51,20 @@
             this.RadioTax7 = new System.Windows.Forms.RadioButton();
             this.TaxRadio0 = new System.Windows.Forms.RadioButton();
             this.DeliveryDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.InitialsTextBox = new System.Windows.Forms.TextBox();
             this.NumItemsDrop = new System.Windows.Forms.ComboBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.BackToMenu = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.BackToMenu = new System.Windows.Forms.Button();
+            this.POOptionsLabel = new System.Windows.Forms.Label();
             this.POCopy = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.CurrencyTable.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -101,17 +101,7 @@
             this.CreatePOButton.TabIndex = 0;
             this.CreatePOButton.Text = "Create PO";
             this.CreatePOButton.UseVisualStyleBackColor = true;
-            // 
-            // POOptionsLabel
-            // 
-            this.POOptionsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.POOptionsLabel.AutoSize = true;
-            this.POOptionsLabel.Location = new System.Drawing.Point(313, 0);
-            this.POOptionsLabel.Name = "POOptionsLabel";
-            this.POOptionsLabel.Size = new System.Drawing.Size(90, 48);
-            this.POOptionsLabel.TabIndex = 2;
-            this.POOptionsLabel.Text = "PO Options";
-            this.POOptionsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CreatePOButton.Click += new System.EventHandler(this.CreatePOButton_Click);
             // 
             // POOutputLabel
             // 
@@ -169,7 +159,7 @@
             this.tableLayoutPanel2.Controls.Add(this.CurrencyTable, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.DeliveryDatePicker, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.InitialsTextBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.NumItemsDrop, 1, 2);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 57);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -322,7 +312,6 @@
             this.SGDRadioBtn.Name = "SGDRadioBtn";
             this.SGDRadioBtn.Size = new System.Drawing.Size(147, 44);
             this.SGDRadioBtn.TabIndex = 9;
-            this.SGDRadioBtn.TabStop = true;
             this.SGDRadioBtn.Text = "SGD";
             this.SGDRadioBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SGDRadioBtn.UseVisualStyleBackColor = true;
@@ -332,6 +321,7 @@
             this.USDRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.USDRadio.AutoSize = true;
             this.USDRadio.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.USDRadio.Checked = true;
             this.USDRadio.Location = new System.Drawing.Point(3, 22);
             this.USDRadio.Name = "USDRadio";
             this.USDRadio.Size = new System.Drawing.Size(147, 44);
@@ -395,16 +385,16 @@
             this.DeliveryDatePicker.Size = new System.Drawing.Size(306, 26);
             this.DeliveryDatePicker.TabIndex = 7;
             // 
-            // textBox1
+            // InitialsTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textBox1.Location = new System.Drawing.Point(315, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(306, 26);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "e.g. AM";
+            this.InitialsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InitialsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InitialsTextBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.InitialsTextBox.Location = new System.Drawing.Point(315, 34);
+            this.InitialsTextBox.Name = "InitialsTextBox";
+            this.InitialsTextBox.Size = new System.Drawing.Size(306, 26);
+            this.InitialsTextBox.TabIndex = 6;
+            this.InitialsTextBox.Text = "e.g. AM";
             // 
             // NumItemsDrop
             // 
@@ -429,17 +419,6 @@
             this.NumItemsDrop.TabIndex = 11;
             this.NumItemsDrop.Text = "Select One...";
             // 
-            // BackToMenu
-            // 
-            this.BackToMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.BackToMenu.Location = new System.Drawing.Point(3, 3);
-            this.BackToMenu.Name = "BackToMenu";
-            this.BackToMenu.Size = new System.Drawing.Size(75, 42);
-            this.BackToMenu.TabIndex = 8;
-            this.BackToMenu.Text = "< Menu";
-            this.BackToMenu.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -456,6 +435,28 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(624, 48);
             this.tableLayoutPanel5.TabIndex = 9;
+            // 
+            // BackToMenu
+            // 
+            this.BackToMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.BackToMenu.Location = new System.Drawing.Point(3, 3);
+            this.BackToMenu.Name = "BackToMenu";
+            this.BackToMenu.Size = new System.Drawing.Size(75, 42);
+            this.BackToMenu.TabIndex = 8;
+            this.BackToMenu.Text = "< Menu";
+            this.BackToMenu.UseVisualStyleBackColor = true;
+            // 
+            // POOptionsLabel
+            // 
+            this.POOptionsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.POOptionsLabel.AutoSize = true;
+            this.POOptionsLabel.Location = new System.Drawing.Point(313, 0);
+            this.POOptionsLabel.Name = "POOptionsLabel";
+            this.POOptionsLabel.Size = new System.Drawing.Size(90, 48);
+            this.POOptionsLabel.TabIndex = 2;
+            this.POOptionsLabel.Text = "PO Options";
+            this.POOptionsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // POCopy
             // 
@@ -487,9 +488,9 @@
             this.CurrencyTable.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -513,7 +514,7 @@
         private System.Windows.Forms.RadioButton SGDRadioBtn;
         private System.Windows.Forms.RadioButton USDRadio;
         private System.Windows.Forms.DateTimePicker DeliveryDatePicker;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox InitialsTextBox;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.RadioButton RadioTax7;
