@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.Create = new System.Windows.Forms.Button();
+            this.poBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Create
@@ -41,20 +42,30 @@
             this.Create.UseVisualStyleBackColor = true;
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
+            // poBox
+            // 
+            this.poBox.Location = new System.Drawing.Point(472, 209);
+            this.poBox.Name = "poBox";
+            this.poBox.Size = new System.Drawing.Size(100, 22);
+            this.poBox.TabIndex = 1;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.poBox);
             this.Controls.Add(this.Create);
             this.Name = "Form2";
             this.Text = "Form2";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button Create;
+        private System.Windows.Forms.TextBox poBox;
     }
 }
