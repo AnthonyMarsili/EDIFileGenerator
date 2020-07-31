@@ -51,6 +51,10 @@ namespace EDIFileGenerator
                     currentWord = "";
                     counter += 2;
                 }
+                else if (currentChar == "\r")
+                {
+                    counter++;
+                }
                 else
                 {
                     currentWord += currentChar;
@@ -227,36 +231,11 @@ namespace EDIFileGenerator
 
         }
 
-        private void Copy_Click(object sender, EventArgs e)
+        private void Clear_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(OutputBox.Text);
+            InputBox.Text = "";
+            OutputBox.Text = "";
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            OutputBox.BackColor = Color.LightGray;
-
-        }
-
-        private void OutputBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ASNLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void AdviceLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
+
 }
