@@ -23,8 +23,7 @@ namespace EDIFileGenerator
             POOutputBox.Text = "";
             String PO = "";
             int NumOfItems = 1;
-            DateTime today = DateTime.Now.AddDays(7);
-            String deliveryDate = "20" + today.ToString("yyMMdd");
+            String deliveryDate = "20" + DeliveryDatePicker.Value.ToString("yyMMdd");
 
             PO += "ISA|00|          |00|          |ZZ|MASINGAPOREMEQ |ZZ|MAKINOSUPP     |";
             PO += DateTime.Now.ToString("yyMMdd") + "|";
@@ -77,11 +76,18 @@ namespace EDIFileGenerator
             Random rnd = new Random();
             int end = rnd.Next(1000, 10000);
 
-            
-            poNum += initials + "4" + DateTime.Now.ToString("MM") + "00" + end.ToString();
-           
+            if (initials == "E.G. AM")
+            {
+                poNum += "TST4" + DateTime.Now.ToString("MM") + "00" + end.ToString();
+            }
+            else
+            {
+                poNum += initials + "4" + DateTime.Now.ToString("MM") + "00" + end.ToString();
+            }
             return poNum;
         }
+
+       
 
         private void BackToMenu_Click(object sender, EventArgs e)
         {
@@ -89,5 +95,16 @@ namespace EDIFileGenerator
             Form mainMenu = new Form1();
             mainMenu.Show();
         }
+
+        private void InitialsTextBox_Click(object sender, EventArgs eventArgs)
+        {
+            if (InitialsTextBox.Text == "E.G. AM")
+            {
+                InitialsTextBox.Text = "";
+                InitialsTextBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            }
+        }
+
+
     }
 }
