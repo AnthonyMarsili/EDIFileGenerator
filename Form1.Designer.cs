@@ -58,10 +58,12 @@
             // PoBtnMenu
             // 
             this.PoBtnMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PoBtnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PoBtnMenu.Location = new System.Drawing.Point(232, 143);
             this.PoBtnMenu.Name = "PoBtnMenu";
             this.PoBtnMenu.Size = new System.Drawing.Size(200, 50);
             this.PoBtnMenu.TabIndex = 0;
+            this.PoBtnMenu.TabStop = false;
             this.PoBtnMenu.Text = "PO Generator";
             this.PoBtnMenu.UseVisualStyleBackColor = true;
             this.PoBtnMenu.Click += new System.EventHandler(this.PoBtnMenu_Click);
@@ -69,10 +71,12 @@
             // ConvertBtnMenu
             // 
             this.ConvertBtnMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ConvertBtnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConvertBtnMenu.Location = new System.Drawing.Point(896, 143);
             this.ConvertBtnMenu.Name = "ConvertBtnMenu";
             this.ConvertBtnMenu.Size = new System.Drawing.Size(200, 50);
             this.ConvertBtnMenu.TabIndex = 1;
+            this.ConvertBtnMenu.TabStop = false;
             this.ConvertBtnMenu.Text = "ASN to RC Converter";
             this.ConvertBtnMenu.UseVisualStyleBackColor = true;
             this.ConvertBtnMenu.Click += new System.EventHandler(this.ConvertBtnMenu_Click);
@@ -99,11 +103,13 @@
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(426, 140);
+            this.textBox1.Location = new System.Drawing.Point(437, 143);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(482, 62);
+            this.textBox1.Size = new System.Drawing.Size(460, 55);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TabStop = false;
             this.textBox1.Text = "Redwave QA Helper";
             // 
             // Form1
