@@ -36,11 +36,8 @@
             this.Clear = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.HoldRadioYes = new System.Windows.Forms.RadioButton();
-            this.HoldRadioNo = new System.Windows.Forms.RadioButton();
             this.InitialsLabel = new System.Windows.Forms.Label();
             this.CurrencyLabel = new System.Windows.Forms.Label();
-            this.HoldLinesLabel = new System.Windows.Forms.Label();
             this.TaxTypesLabel = new System.Windows.Forms.Label();
             this.DeliveryDateLabel = new System.Windows.Forms.Label();
             this.NumLinesLabel = new System.Windows.Forms.Label();
@@ -48,8 +45,6 @@
             this.SGDRadioBtn = new System.Windows.Forms.RadioButton();
             this.USDRadio = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.RadioTax7 = new System.Windows.Forms.RadioButton();
-            this.TaxRadio0 = new System.Windows.Forms.RadioButton();
             this.DeliveryDatePicker = new System.Windows.Forms.DateTimePicker();
             this.InitialsTextBox = new System.Windows.Forms.TextBox();
             this.NumItemsDrop = new System.Windows.Forms.ComboBox();
@@ -58,9 +53,10 @@
             this.POOptionsLabel = new System.Windows.Forms.Label();
             this.POCopy = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.zeroPercent = new System.Windows.Forms.CheckBox();
+            this.sevenPercent = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.CurrencyTable.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -149,7 +145,6 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.InitialsLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.CurrencyLabel, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.HoldLinesLabel, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.TaxTypesLabel, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.DeliveryDateLabel, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.NumLinesLabel, 0, 2);
@@ -179,8 +174,6 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.HoldRadioYes, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.HoldRadioNo, 0, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(280, 382);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -189,36 +182,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(271, 76);
             this.tableLayoutPanel4.TabIndex = 12;
-            // 
-            // HoldRadioYes
-            // 
-            this.HoldRadioYes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.HoldRadioYes.AutoSize = true;
-            this.HoldRadioYes.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.HoldRadioYes.Location = new System.Drawing.Point(138, 19);
-            this.HoldRadioYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.HoldRadioYes.Name = "HoldRadioYes";
-            this.HoldRadioYes.Size = new System.Drawing.Size(130, 37);
-            this.HoldRadioYes.TabIndex = 9;
-            this.HoldRadioYes.Text = "Yes";
-            this.HoldRadioYes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.HoldRadioYes.UseVisualStyleBackColor = true;
-            // 
-            // HoldRadioNo
-            // 
-            this.HoldRadioNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.HoldRadioNo.AutoSize = true;
-            this.HoldRadioNo.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.HoldRadioNo.Checked = true;
-            this.HoldRadioNo.Location = new System.Drawing.Point(3, 19);
-            this.HoldRadioNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.HoldRadioNo.Name = "HoldRadioNo";
-            this.HoldRadioNo.Size = new System.Drawing.Size(129, 37);
-            this.HoldRadioNo.TabIndex = 8;
-            this.HoldRadioNo.TabStop = true;
-            this.HoldRadioNo.Text = "No";
-            this.HoldRadioNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.HoldRadioNo.UseVisualStyleBackColor = true;
             // 
             // InitialsLabel
             // 
@@ -241,17 +204,6 @@
             this.CurrencyLabel.TabIndex = 1;
             this.CurrencyLabel.Text = "Currency:";
             this.CurrencyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // HoldLinesLabel
-            // 
-            this.HoldLinesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.HoldLinesLabel.AutoSize = true;
-            this.HoldLinesLabel.Location = new System.Drawing.Point(74, 380);
-            this.HoldLinesLabel.Name = "HoldLinesLabel";
-            this.HoldLinesLabel.Size = new System.Drawing.Size(128, 80);
-            this.HoldLinesLabel.TabIndex = 4;
-            this.HoldLinesLabel.Text = "Include Hold Lines:";
-            this.HoldLinesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TaxTypesLabel
             // 
@@ -343,8 +295,8 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.RadioTax7, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.TaxRadio0, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.zeroPercent, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.sevenPercent, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(280, 306);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -353,37 +305,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(271, 72);
             this.tableLayoutPanel3.TabIndex = 10;
-            // 
-            // RadioTax7
-            // 
-            this.RadioTax7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.RadioTax7.AutoSize = true;
-            this.RadioTax7.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.RadioTax7.Location = new System.Drawing.Point(138, 17);
-            this.RadioTax7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.RadioTax7.Name = "RadioTax7";
-            this.RadioTax7.Size = new System.Drawing.Size(130, 37);
-            this.RadioTax7.TabIndex = 9;
-            this.RadioTax7.TabStop = true;
-            this.RadioTax7.Text = "7%";
-            this.RadioTax7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.RadioTax7.UseVisualStyleBackColor = true;
-            // 
-            // TaxRadio0
-            // 
-            this.TaxRadio0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TaxRadio0.AutoSize = true;
-            this.TaxRadio0.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.TaxRadio0.Checked = true;
-            this.TaxRadio0.Location = new System.Drawing.Point(3, 17);
-            this.TaxRadio0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TaxRadio0.Name = "TaxRadio0";
-            this.TaxRadio0.Size = new System.Drawing.Size(129, 37);
-            this.TaxRadio0.TabIndex = 8;
-            this.TaxRadio0.TabStop = true;
-            this.TaxRadio0.Text = "0%";
-            this.TaxRadio0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.TaxRadio0.UseVisualStyleBackColor = true;
             // 
             // DeliveryDatePicker
             // 
@@ -428,7 +349,7 @@
             "50",
             "100",
             "125"});
-            this.NumItemsDrop.Location = new System.Drawing.Point(280, 177);
+            this.NumItemsDrop.Location = new System.Drawing.Point(280, 178);
             this.NumItemsDrop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumItemsDrop.Name = "NumItemsDrop";
             this.NumItemsDrop.Size = new System.Drawing.Size(271, 24);
@@ -487,6 +408,28 @@
             this.POCopy.Text = "Copy";
             this.POCopy.UseVisualStyleBackColor = true;
             // 
+            // zeroPercent
+            // 
+            this.zeroPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.zeroPercent.AutoSize = true;
+            this.zeroPercent.Location = new System.Drawing.Point(42, 3);
+            this.zeroPercent.Name = "zeroPercent";
+            this.zeroPercent.Size = new System.Drawing.Size(50, 66);
+            this.zeroPercent.TabIndex = 0;
+            this.zeroPercent.Text = "0%";
+            this.zeroPercent.UseVisualStyleBackColor = true;
+            // 
+            // sevenPercent
+            // 
+            this.sevenPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.sevenPercent.AutoSize = true;
+            this.sevenPercent.Location = new System.Drawing.Point(178, 3);
+            this.sevenPercent.Name = "sevenPercent";
+            this.sevenPercent.Size = new System.Drawing.Size(50, 66);
+            this.sevenPercent.TabIndex = 1;
+            this.sevenPercent.Text = "7%";
+            this.sevenPercent.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -500,8 +443,6 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.CurrencyTable.ResumeLayout(false);
             this.CurrencyTable.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -524,7 +465,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label InitialsLabel;
         private System.Windows.Forms.Label CurrencyLabel;
-        private System.Windows.Forms.Label HoldLinesLabel;
         private System.Windows.Forms.Label TaxTypesLabel;
         private System.Windows.Forms.Label DeliveryDateLabel;
         private System.Windows.Forms.Label NumLinesLabel;
@@ -535,14 +475,12 @@
         private System.Windows.Forms.TextBox InitialsTextBox;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.RadioButton RadioTax7;
-        private System.Windows.Forms.RadioButton TaxRadio0;
         private System.Windows.Forms.ComboBox NumItemsDrop;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.RadioButton HoldRadioYes;
-        private System.Windows.Forms.RadioButton HoldRadioNo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button BackToMenu;
         private System.Windows.Forms.Button POCopy;
+        private System.Windows.Forms.CheckBox zeroPercent;
+        private System.Windows.Forms.CheckBox sevenPercent;
     }
 }

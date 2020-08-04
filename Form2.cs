@@ -56,12 +56,48 @@ namespace EDIFileGenerator
                 NumOfItems = Int32.Parse(NumItemsDrop.SelectedItem.ToString());
             }
 
-            for (int i = 1; i <= NumOfItems; i++)
+
+            if (zeroPercent.Checked && sevenPercent.Checked)
             {
-                PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
-                PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\nTXI | P1 || 7 ||||||| Standard - rated 7 %`\r\nSCH | 10 | ST | POA | POA | 017 |";
-                PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
+                for (int i = 1; i <= NumOfItems; i++)
+                {
+                    if (i % 2 == 1)
+                    {
+                        PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                        PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\n";
+                        PO += "TXI | P1 || 7 |||||||GST on import-MES 0%`\r\nSCH | 10 | ST | POA | POA | 017 |";
+                        PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
+                    }
+                    else
+                    {
+                        PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                        PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\n";
+                        PO += "TXI | P1 || 7 ||||||| Standard - rated 7 %`\r\nSCH | 10 | ST | POA | POA | 017 |";
+                        PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
+                    }
+                }
             }
+            else if (sevenPercent.Checked)
+            {
+                for (int i = 1; i <= NumOfItems; i++)
+                {
+                    PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                    PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\n";
+                    PO += "TXI | P1 || 7 ||||||| Standard - rated 7 %`\r\nSCH | 10 | ST | POA | POA | 017 |";
+                    PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
+                }
+            }
+            else
+            {
+                for (int i = 1; i <= NumOfItems; i++)
+                {
+                    PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                    PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\n";
+                    PO += "TXI | P1 || 7 |||||||GST on import-MES 0%`\r\nSCH | 10 | ST | POA | POA | 017 |";
+                    PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
+                }
+            }
+            
             
             PO += "CTT|" + NumOfItems.ToString() + "|10`\r\nSE | 38 | 0047`\r\nGE | 1 | 47`\r\nIEA | 1 | 161`\r\n";
 
