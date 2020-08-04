@@ -83,5 +83,11 @@ namespace EDIFileGenerator
             return poNum;
         }
 
+        private void BackToMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form mainMenu = new Form1();
+            mainMenu.Show();
+        }
     }
 }

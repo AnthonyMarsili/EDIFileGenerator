@@ -446,6 +446,7 @@
             this.BackToMenu.TabIndex = 8;
             this.BackToMenu.Text = "< Menu";
             this.BackToMenu.UseVisualStyleBackColor = true;
+            this.BackToMenu.Click += new System.EventHandler(this.BackToMenu_Click);
             // 
             // POOptionsLabel
             // 
@@ -477,6 +478,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PO Generator";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
