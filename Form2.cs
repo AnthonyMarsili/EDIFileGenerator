@@ -178,5 +178,17 @@ namespace EDIFileGenerator
         {
             Clipboard.SetText(POOutputBox.Text);
         }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            POOutputBox.Text = "";
+            InitialsTextBox.Text = "E.G. TST";
+            InitialsTextBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            USDRadio.Checked = true;
+            NumItemsDrop.SelectedIndex = 0;
+            zeroPercent.Checked = false;
+            sevenPercent.Checked = false;
+
+        }
     }
 }
