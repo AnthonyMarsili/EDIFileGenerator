@@ -28,12 +28,12 @@ namespace EDIFileGenerator
             PO += "ISA|00|          |00|          |ZZ|MASINGAPOREMEQ |ZZ|MAKINOSUPP     |";
             PO += DateTime.Now.ToString("yyMMdd") + "|";
             PO += DateTime.Now.ToString("HHmm");
-            PO += "|U|00401|000000161|0|T|>`\r\nGS | PO | MASINGAPOREMEQ | MAKINOSUPP |";
+            PO += "|U|00401|000000161|0|T|>`\r\nGS|PO|MASINGAPOREMEQ|MAKINOSUPP|";
             PO += "20" + DateTime.Now.ToString("yyMMdd") + "|";
             PO += DateTime.Now.ToString("HHmm");
-            PO += "| 47 | X | 004010`\r\nST | 850 | 0047`\r\nBEG | 04 | SA |";
+            PO += "|47|X|004010`\r\nST|850|0047`\r\nBEG|04|SA|";
             PO += PONumberGeneretor();
-            PO += "|| 20200731 || AC`\r\nCUR | II |";
+            PO += "||20200731||AC`\r\nCUR|II|";
             //Add check for curency here
             
             if (USDRadio.Checked)
@@ -44,13 +44,13 @@ namespace EDIFileGenerator
             {
                 PO += "SGD";
             }
-            PO += "`\r\nREF | PG | 100`\r\nREF | PC | 1010`\r\nREF | BC | 1010`\r\nREF | ZZ | PRODUCTION`\r\nPER|SU|";
+            PO += "`\r\nREF|PG|100`\r\nREF|PC|1010`\r\nREF|BC|1010`\r\nREF|ZZ|PRODUCTION`\r\nPER|SU|";
             PO += "|Test Vendor Company|TE|123-123-1234|FX|5874 5896`\r\n";
-            PO += "PER | BD |Test User| TE |123456789||| EM | test@redwavecommerce.com`\r\nFOB | DF ||| 01 | EXW | CI | SINGAPORE`\r\n";
-            PO += "ITD ||||||| 30 ||||| Within 30 days due net`\r\n";
-            PO += "N1 | SE | Vendor Factory | 92 | 0000100123`\r\nN3 | 123 Poplar Ave #54321`\r\nN4 | SINGAPORE || 654321 | SG`\r\n";
-            PO += "N1|BT|MAKINO ASIA PTE LTD|92|1010`\r\nN3 | 2 Gul Avenue`\r\nN4 | Singapore || 629649 | SG`\r\n";
-            PO += "N1|ST|MAKINO ASIA PTE LTD|92|1010`\r\nN3 | 166 Gul Circle`\r\nN4 | Singapore || 629622 | SG`\r\n";
+            PO += "PER|BD|Test User|TE|123456789|||EM|test@redwavecommerce.com`\r\nFOB|DF|||01|EXW|CI|SINGAPORE`\r\n";
+            PO += "ITD|||||||30|||||Within 30 days due net`\r\n";
+            PO += "N1|SE|Vendor Factory|92|0000100123`\r\nN3|123 Poplar Ave #54321`\r\nN4|SINGAPORE||654321|SG`\r\n";
+            PO += "N1|BT|MAKINO ASIA PTE LTD|92|1010`\r\nN3|2 Gul Avenue`\r\nN4|Singapore||629649|SG`\r\n";
+            PO += "N1|ST|MAKINO ASIA PTE LTD|92|1010`\r\nN3|166 Gul Circle`\r\nN4|Singapore||629622|SG`\r\n";
 
             if (NumItemsDrop.SelectedItem != null) {
                 NumOfItems = Int32.Parse(NumItemsDrop.SelectedItem.ToString());
@@ -64,15 +64,15 @@ namespace EDIFileGenerator
                     if (i % 2 == 1)
                     {
                         PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
-                        PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\n";
-                        PO += "TXI | P1 || 7 |||||||GST on import-MES 0%`\r\nSCH | 10 | ST | POA | POA | 017 |";
+                        PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
+                        PO += "TXI|P1||0|||||||GST on import-MES 0%`\r\nSCH|10|ST|POA|POA|017|";
                         PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
                     }
                     else
                     {
                         PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
-                        PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\n";
-                        PO += "TXI | P1 || 7 ||||||| Standard - rated 7 %`\r\nSCH | 10 | ST | POA | POA | 017 |";
+                        PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
+                        PO += "TXI|P1||7|||||||Standard - rated 7 %`\r\nSCH|10|ST|POA|POA|017|";
                         PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
                     }
                 }
@@ -82,8 +82,18 @@ namespace EDIFileGenerator
                 for (int i = 1; i <= NumOfItems; i++)
                 {
                     PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
-                    PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\n";
-                    PO += "TXI | P1 || 7 ||||||| Standard - rated 7 %`\r\nSCH | 10 | ST | POA | POA | 017 |";
+                    PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
+                    PO += "TXI|P1||7|||||||Standard - rated 7 %`\r\nSCH|10|ST|POA|POA|017|";
+                    PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
+                }
+            }
+            else if (zeroPercent.Checked)
+            {
+                for (int i = 1; i <= NumOfItems; i++)
+                {
+                    PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                    PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
+                    PO += "TXI|P1||0|||||||GST on import-MES 0%`\r\nSCH|10|ST|POA|POA|017|";
                     PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
                 }
             }
@@ -92,14 +102,14 @@ namespace EDIFileGenerator
                 for (int i = 1; i <= NumOfItems; i++)
                 {
                     PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
-                    PO += "PID | F |||| ATC PANEL, CX19(VBMTC) SET`\r\n";
-                    PO += "TXI | P1 || 7 |||||||GST on import-MES 0%`\r\nSCH | 10 | ST | POA | POA | 017 |";
+                    PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
+                    PO += "SCH|10|ST|POA|POA|017|";
                     PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
                 }
             }
             
             
-            PO += "CTT|" + NumOfItems.ToString() + "|10`\r\nSE | 38 | 0047`\r\nGE | 1 | 47`\r\nIEA | 1 | 161`\r\n";
+            PO += "CTT|" + NumOfItems.ToString() + "|10`\r\nSE|38|0047`\r\nGE|1|47`\r\nIEA|1|161`\r\n";
 
             POOutputBox.Text = PO;
 
@@ -112,9 +122,9 @@ namespace EDIFileGenerator
             Random rnd = new Random();
             int end = rnd.Next(1000, 10000);
 
-            if (initials == "E.G. AM")
+            if (initials == "E.G. TST")
             {
-                poNum += "TST4" + DateTime.Now.ToString("MM") + "00" + end.ToString();
+                poNum += "TST" + DateTime.Now.ToString("MM") + "00" + end.ToString();
             }
             else
             {
@@ -134,13 +144,16 @@ namespace EDIFileGenerator
 
         private void InitialsTextBox_Click(object sender, EventArgs eventArgs)
         {
-            if (InitialsTextBox.Text == "E.G. AM")
+            if (InitialsTextBox.Text == "E.G. TST")
             {
                 InitialsTextBox.Text = "";
                 InitialsTextBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             }
         }
 
-
+        private void POCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(POOutputBox.Text);
+        }
     }
 }
