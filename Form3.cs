@@ -238,8 +238,8 @@ namespace EDIFileGenerator
         }
 
         private void Copy_Click(object sender, EventArgs e)
-        {
-
+        {                
+            Clipboard.SetText(OutputBox.Text);
         }
 
         private void BackToMenu_Click(object sender, EventArgs e)
