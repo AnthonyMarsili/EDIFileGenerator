@@ -16,6 +16,15 @@ namespace EDIFileGenerator
         public Form2()
         {
             InitializeComponent();
+            Random rnd = new Random();
+            int end = rnd.Next(1000, 10000);
+            Globals.poNumber = end;
+        }
+
+        public static class Globals
+        {
+            
+            public static int poNumber;
         }
 
         private void CreatePOButton_Click(object sender, EventArgs e)
@@ -63,14 +72,14 @@ namespace EDIFileGenerator
                 {
                     if (i % 2 == 1)
                     {
-                        PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                        PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|DemoItem" + i + "`\r\n";
                         PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
                         PO += "TXI|P1||0|||||||GST on import-MES 0%`\r\nSCH|10|ST|POA|POA|017|";
                         PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
                     }
                     else
                     {
-                        PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                        PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|DemoItem" + i + "`\r\n";
                         PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
                         PO += "TXI|P1||7|||||||Standard - rated 7 %`\r\nSCH|10|ST|POA|POA|017|";
                         PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
@@ -81,7 +90,7 @@ namespace EDIFileGenerator
             {
                 for (int i = 1; i <= NumOfItems; i++)
                 {
-                    PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                    PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|DemoItem" + i + "`\r\n";
                     PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
                     PO += "TXI|P1||7|||||||Standard - rated 7 %`\r\nSCH|10|ST|POA|POA|017|";
                     PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
@@ -91,7 +100,7 @@ namespace EDIFileGenerator
             {
                 for (int i = 1; i <= NumOfItems; i++)
                 {
-                    PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                    PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|DemoItem" + i + "`\r\n";
                     PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
                     PO += "TXI|P1||0|||||||GST on import-MES 0%`\r\nSCH|10|ST|POA|POA|017|";
                     PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
@@ -101,7 +110,7 @@ namespace EDIFileGenerator
             {
                 for (int i = 1; i <= NumOfItems; i++)
                 {
-                    PO += "PO1|000" + i + "0|10|ST|100.99||BP|1CD024A-90.5`\r\n";
+                    PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|DemoItem" + i + "`\r\n";
                     PO += "PID|F||||ATC PANEL, CX19(VBMTC) SET`\r\n";
                     PO += "SCH|10|ST|POA|POA|017|";
                     PO += deliveryDate + "||002|" + deliveryDate + "`\r\n";
@@ -119,21 +128,30 @@ namespace EDIFileGenerator
         {
             String poNum = "";
             String initials = InitialsTextBox.Text;
-            Random rnd = new Random();
-            int end = rnd.Next(1000, 10000);
+            
 
             if (initials == "E.G. TST")
             {
-                poNum += "TST" + DateTime.Now.ToString("MM") + "00" + end.ToString();
+                poNum += "TST" + DateTime.Now.ToString("MM") + "00" + Globals.poNumber.ToString();
             }
             else
             {
-                poNum += initials + "4" + DateTime.Now.ToString("MM") + "00" + end.ToString();
+                poNum += initials + "4" + DateTime.Now.ToString("MM") + "00" + Globals.poNumber.ToString();
             }
+
+            Globals.poNumber++;
+
             return poNum;
         }
 
-       
+       public String lineItemGenerator(int num)
+        {
+            String line = num + "0";
+            while (line.Length < 5){
+                line = "0" + line;
+            }
+            return line;
+        }
 
         private void BackToMenu_Click(object sender, EventArgs e)
         {
@@ -148,6 +166,11 @@ namespace EDIFileGenerator
             {
                 InitialsTextBox.Text = "";
                 InitialsTextBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            }
+            else
+            {
+                InitialsTextBox.SelectionStart = 0;
+                InitialsTextBox.SelectionLength = InitialsTextBox.Text.Length;
             }
         }
 
