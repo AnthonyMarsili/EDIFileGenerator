@@ -17,7 +17,7 @@ namespace EDIFileGenerator
         public Form3()
         {
             InitializeComponent();
-          
+            OriginatorBox.SelectedIndex = 0;
         }
 
         public static class Globals {
@@ -248,6 +248,7 @@ namespace EDIFileGenerator
             Form mainMenu = new Form1();
             mainMenu.Show();
         }
+
     }
 
 }
