@@ -41,7 +41,7 @@ namespace EDIFileGenerator
             PO += DateTime.Now.ToString("yyMMdd") + "|";
             PO += DateTime.Now.ToString("HHmm");
             PO += "|U|00401|000000161|0|T|>`\r\n";
-            PO += "GS | PO|MASINGAPOREMEQ|MAKINOSUPP|";
+            PO += "GS|PO|MASINGAPOREMEQ|MAKINOSUPP|";
             PO += "20" + DateTime.Now.ToString("yyMMdd") + "|";
             PO += DateTime.Now.ToString("HHmm");
             PO += "|47|X|004010`\r\n";
@@ -59,7 +59,8 @@ namespace EDIFileGenerator
             {
                 PO += "SGD";
             }
-            PO += "`\r\nREF|PG|100`\r\nREF|PC|1010`\r\n";
+            PO += "`\r\n";
+            PO += "REF|PG|100`\r\nREF|PC|1010`\r\n";
             PO += "REF|BC|1010`\r\nREF|ZZ|PRODUCTION`\r\n";
             PO += "PER|SU|Test Vendor Company|TE|123-123-1234|FX|5874 5896`\r\n";
             PO += "PER|BD|Test User|TE|123456789|||EM|test@redwavecommerce.com|DF|||01|EXW|CI|SINGAPORE`\r\n";
