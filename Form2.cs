@@ -36,7 +36,32 @@ namespace EDIFileGenerator
             String PO = "";
             int NumOfItems = 1;
             String deliveryDate = "20" + DeliveryDatePicker.Value.ToString("yyMMdd");
+            string[] template = { "ISA", "00", "00", "ZZ", "MASINGAPOREMEQ", "ZZ", "MAKINOSUPP", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
+                                  "GS", "PO", "MASINGAPOREMEQ", "MAKINOSUPP", "00000000", "0000", "47", "X", "004010", "`",
+                                  "ST", "850", "0047", "`",
+                                  "BEG", "04", "SA", "", "20", "", "AC", "`",
+                                  "CUR", "II", "`",
+                                  "REF", "PG","100", "`",
+                                  "REF", "PC", "1010", "`",
+                                  "REF", "BC", "1010", "`",
+                                  "REF", "ZZ", "PRODUCTION", "`",
+                                  "PER", "SU", "Test Vendor Company", "TE", "123-123-1234", "FX", "5874 5896", "`",
+                                  "PER", "BD", "Test User", "TE", "123456789", "", "", "EM", "test@redwavecommerce.com", "DF", "", "", "01", "EXW", "CI", "SINGAPORE", "`",
+                                  "ITD", "", "", "", "", "", "", "30", "", "", "" ,"", "Within 30 days due net", "`",
+                                  "N1", "SE", "Vendor Factory", "92", "0000100123", "`",
+                                  "N3", "123 Poplar Ave #54321", "`",
+                                  "N4", "SINGAPORE", "", "654321", "SG", "`",
+                                  "N1", "BT", "MAKINO ASIA PTE LTD", "92", "1010", "`",
+                                  "N3", "2 Gul Avenue", "`",
+                                  "N4", "Singapore", "", "629649", "SG", "`",
+                                  "N1", "ST", "MAKINO ASIA PTE LTD", "92", "1010", "`",
+                                  "N3", "166 Gul Circle", "`",
+                                  "N4", "Singapore", "", "629622", "SG", "`"
 
+            };
+            List<String> words = new List<string>(template);
+
+            //Top Envelope
             PO += "ISA|00|          |00|          |ZZ|MASINGAPOREMEQ |ZZ|MAKINOSUPP     |";
             PO += DateTime.Now.ToString("yyMMdd") + "|";
             PO += DateTime.Now.ToString("HHmm");
@@ -45,7 +70,10 @@ namespace EDIFileGenerator
             PO += "20" + DateTime.Now.ToString("yyMMdd") + "|";
             PO += DateTime.Now.ToString("HHmm");
             PO += "|47|X|004010`\r\n";
-            PO += "ST|850|0047`\r\nBEG|04|SA|";
+            PO += "ST|850|0047`\r\n";
+            
+            
+            PO += "BEG|04|SA|";
             PO += PONumberGeneretor();
             PO += "||20" + DateTime.Now.ToString("yyMMdd") + "||AC`\r\n";
             PO += "CUR|II|";

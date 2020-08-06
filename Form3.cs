@@ -96,7 +96,7 @@ namespace EDIFileGenerator
 
         private void Engine(List<String> words) {
             List<String> envelope = new List<String>();
-            List<String> bottomEnvVals;
+            List<String> bottomEnvVals = new List<String>();
             Boolean flag = true;
 
             int SE01;
@@ -120,8 +120,18 @@ namespace EDIFileGenerator
 
             if (flag)
             {
-                bottomEnvVals = topEnvelopeMaker(envelope);
 
+                envelope = Envelope.TopEnvelope(envelope, 856);
+
+                //Getting the values for the bottom envelope.
+                for(int i = 0; i < 3; i++)
+                {
+                    bottomEnvVals.Add(envelope[32]);
+                    envelope.RemoveAt(32);
+                }
+
+                Globals.outputText += PutBackTogether(envelope); 
+               
                 SE01 = ReceivingAdviceMaker(words);
 
                 bottomEnvVals.Insert(0, SE01.ToString());
