@@ -35,7 +35,7 @@
             this.POOutputBox = new System.Windows.Forms.TextBox();
             this.Clear = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.CompanyName = new System.Windows.Forms.ComboBox();
+            this.OriginatorBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.zeroPercent = new System.Windows.Forms.CheckBox();
@@ -144,7 +144,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.CompanyName, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.OriginatorBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.TaxTypesLabel, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.InitialsLabel, 0, 1);
@@ -169,18 +169,18 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(554, 460);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
-            // CompanyName
+            // OriginatorBox
             // 
-            this.CompanyName.AllowDrop = true;
-            this.CompanyName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CompanyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CompanyName.FormattingEnabled = true;
-            this.CompanyName.Items.AddRange(new object[] {
+            this.OriginatorBox.AllowDrop = true;
+            this.OriginatorBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OriginatorBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OriginatorBox.FormattingEnabled = true;
+            this.OriginatorBox.Items.AddRange(new object[] {
             "Makino"});
-            this.CompanyName.Location = new System.Drawing.Point(280, 26);
-            this.CompanyName.Name = "CompanyName";
-            this.CompanyName.Size = new System.Drawing.Size(271, 24);
-            this.CompanyName.TabIndex = 0;
+            this.OriginatorBox.Location = new System.Drawing.Point(280, 26);
+            this.OriginatorBox.Name = "OriginatorBox";
+            this.OriginatorBox.Size = new System.Drawing.Size(271, 24);
+            this.OriginatorBox.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
@@ -513,7 +513,7 @@
         private System.Windows.Forms.Button POCopy;
         private System.Windows.Forms.CheckBox zeroPercent;
         private System.Windows.Forms.CheckBox sevenPercent;
-        private System.Windows.Forms.ComboBox CompanyName;
+        private System.Windows.Forms.ComboBox OriginatorBox;
         private System.Windows.Forms.Label label1;
     }
 }

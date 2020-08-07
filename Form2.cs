@@ -20,7 +20,7 @@ namespace EDIFileGenerator
             int end = rnd.Next(1000, 10000);
             Globals.poNumber = end;
             DeliveryDatePicker.Value = DateTime.Now.AddDays(7);
-            CompanyName.SelectedIndex = 0;
+            OriginatorBox.SelectedIndex = 0;
         }
 
         public static class Globals
@@ -57,6 +57,8 @@ namespace EDIFileGenerator
             return output;
         }
 
+        
+
         private void CreatePOButton_Click(object sender, EventArgs e)
         {
             POOutputBox.Text = "";
@@ -66,7 +68,7 @@ namespace EDIFileGenerator
             string[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
                                   "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
                                   "ST", "850", "0047", "`",
-                                  "BEG", "04", "SA", "", "20", "", "AC", "`",
+                                  "BEG", "00", "SA", "", "20", "", "AC", "`",
                                   "CUR", "II", "`",
                                   "REF", "PG","100", "`",
                                   "REF", "PC", "1010", "`",
@@ -86,21 +88,28 @@ namespace EDIFileGenerator
                                   "N4", "Singapore", "", "629622", "SG", "`"
 
             };
+
+            
+
+
             List<String> words = new List<string>(template);
+            List<String> topEnvelope = words.GetRange(0, 32);
+
+            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, OriginatorBox.ValueMember, 850));
 
             //Top Envelope
-            PO += "ISA|00|          |00|          |ZZ|MASINGAPOREMEQ |ZZ|MAKINOSUPP     |";
-            PO += DateTime.Now.ToString("yyMMdd") + "|";
-            PO += DateTime.Now.ToString("HHmm");
-            PO += "|U|00401|000000161|0|T|>`\r\n";
-            PO += "GS|PO|MASINGAPOREMEQ|MAKINOSUPP|";
-            PO += "20" + DateTime.Now.ToString("yyMMdd") + "|";
-            PO += DateTime.Now.ToString("HHmm");
-            PO += "|47|X|004010`\r\n";
-            PO += "ST|850|0047`\r\n";
+            //PO += "ISA|00|          |00|          |ZZ|MASINGAPOREMEQ |ZZ|MAKINOSUPP     |";
+            //PO += DateTime.Now.ToString("yyMMdd") + "|";
+            //PO += DateTime.Now.ToString("HHmm");
+            //PO += "|U|00401|000000161|0|T|>`\r\n";
+            //PO += "GS|PO|MASINGAPOREMEQ|MAKINOSUPP|";
+            //PO += "20" + DateTime.Now.ToString("yyMMdd") + "|";
+            //PO += DateTime.Now.ToString("HHmm");
+            //PO += "|47|X|004010`\r\n";
+            //PO += "ST|850|0047`\r\n";
             
             
-            PO += "BEG|04|SA|";
+            PO += "BEG|00|SA|";
             PO += PONumberGeneretor();
             PO += "||20" + DateTime.Now.ToString("yyMMdd") + "||AC`\r\n";
             PO += "CUR|II|";
