@@ -121,7 +121,7 @@ namespace EDIFileGenerator
             if (flag)
             {
 
-                envelope = Envelope.TopEnvelope(envelope, 856);
+                envelope = Envelope.TopEnvelope(envelope, OriginatorBox.ValueMember, 856);
 
                 //Getting the values for the bottom envelope.
                 for(int i = 0; i < 3; i++)

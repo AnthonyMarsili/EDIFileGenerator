@@ -30,7 +30,34 @@ namespace EDIFileGenerator
             public static int itemNumber = 12345;
         }
 
-        private void CreatePOButton_Click(object sender, EventArgs e)
+        private String PutBackTogether(List<String> inputList)
+        {
+            //Put all the words back together with proper delimiters 
+            String output = "";
+            int counter = 0;
+            int length = inputList.Count;
+            while (counter < length)
+            {
+                if (inputList[1] == "~" || inputList[1] == "`")
+                {
+                    output += inputList[0] + "~\r\n";
+                    inputList.RemoveAt(0);
+                    inputList.RemoveAt(0);
+                    counter++;
+                    counter++;
+                }
+                else
+                {
+                    output += inputList[0];
+                    output += "*";
+                    inputList.RemoveAt(0);
+                    counter++;
+                }
+            }
+            return output;
+        }
+
+                private void CreatePOButton_Click(object sender, EventArgs e)
         {
             POOutputBox.Text = "";
             String PO = "";
@@ -237,6 +264,11 @@ namespace EDIFileGenerator
             DeliveryDatePicker.Value = DateTime.Now.AddDays(7);
             zeroPercent.Checked = false;
             sevenPercent.Checked = false;
+
+        }
+
+        public void Engine()
+        {
 
         }
     }

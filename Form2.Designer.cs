@@ -177,7 +177,7 @@
             this.CompanyName.FormattingEnabled = true;
             this.CompanyName.Items.AddRange(new object[] {
             "Makino"});
-            this.CompanyName.Location = new System.Drawing.Point(280, 25);
+            this.CompanyName.Location = new System.Drawing.Point(280, 26);
             this.CompanyName.Name = "CompanyName";
             this.CompanyName.Size = new System.Drawing.Size(271, 24);
             this.CompanyName.TabIndex = 0;
@@ -350,7 +350,7 @@
             "50",
             "100",
             "125"});
-            this.NumItemsDrop.Location = new System.Drawing.Point(280, 254);
+            this.NumItemsDrop.Location = new System.Drawing.Point(280, 253);
             this.NumItemsDrop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumItemsDrop.Name = "NumItemsDrop";
             this.NumItemsDrop.Size = new System.Drawing.Size(271, 24);

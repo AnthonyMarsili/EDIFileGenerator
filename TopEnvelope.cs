@@ -10,8 +10,15 @@ namespace EDIFileGenerator
 {
     class Envelope
     {
-        public static List<String> TopEnvelope(List<String> envelope, int type) {
+        public static List<String> TopEnvelope(List<String> envelope, String Company, int type) {
             List<String> result = new List<String>();
+            String sender = "";
+            String receiver = "";
+            if (Company == "Makino")
+            {
+                sender = "MASINGAPOREMEQ";
+                receiver = "MAKINOSUPP     ";
+            }
 
             if (type == 856)
             {
@@ -50,8 +57,30 @@ namespace EDIFileGenerator
 
                 return result;
             }
-            else //if (type == 850)
+            else if (type == 850)
             {
+                envelope[6] = sender;
+                while (receiver.Length < 16)
+                {
+                    receiver += " ";
+                }
+                envelope[8] = receiver;
+                envelope[20] = sender;
+                envelope[21] = receiver;
+
+                String today = DateTime.Now.ToString("yyMMdd");
+                envelope[9] = today;
+                envelope[22] = "20" + today;
+
+                String time = DateTime.Now.ToString("HHmm");
+                envelope[10] = time;
+                envelope[23] = time;
+
+                for (int i = 0; i < 32; i++)
+                {
+                    result.Add(envelope[i]);
+                }
+
                 return result;
             }
         }
