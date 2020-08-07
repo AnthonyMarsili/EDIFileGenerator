@@ -57,14 +57,14 @@ namespace EDIFileGenerator
             return output;
         }
 
-                private void CreatePOButton_Click(object sender, EventArgs e)
+        private void CreatePOButton_Click(object sender, EventArgs e)
         {
             POOutputBox.Text = "";
             String PO = "";
             int NumOfItems = 1;
             String deliveryDate = "20" + DeliveryDatePicker.Value.ToString("yyMMdd");
-            string[] template = { "ISA", "00", "00", "ZZ", "MASINGAPOREMEQ", "ZZ", "MAKINOSUPP", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
-                                  "GS", "PO", "MASINGAPOREMEQ", "MAKINOSUPP", "00000000", "0000", "47", "X", "004010", "`",
+            string[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
+                                  "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
                                   "ST", "850", "0047", "`",
                                   "BEG", "04", "SA", "", "20", "", "AC", "`",
                                   "CUR", "II", "`",
@@ -270,6 +270,11 @@ namespace EDIFileGenerator
         public void Engine()
         {
 
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -258,7 +258,10 @@ namespace EDIFileGenerator
             Form mainMenu = new Form1();
             mainMenu.Show();
         }
-
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 
 }

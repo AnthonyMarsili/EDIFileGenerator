@@ -30,5 +30,10 @@ namespace EDIFileGenerator
             Form ASNtoRCConverter = new Form3();
             ASNtoRCConverter.Show();
         }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -83,6 +83,10 @@ namespace EDIFileGenerator
 
                 return result;
             }
+            else
+            {
+                return result;
+            }
         }
 }
 }
