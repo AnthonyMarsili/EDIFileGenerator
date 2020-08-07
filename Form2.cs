@@ -89,26 +89,13 @@ namespace EDIFileGenerator
 
             };
 
-            
-
-
             List<String> words = new List<string>(template);
             List<String> topEnvelope = words.GetRange(0, 32);
 
-            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, OriginatorBox.ValueMember, 850));
-
-            //Top Envelope
-            //PO += "ISA|00|          |00|          |ZZ|MASINGAPOREMEQ |ZZ|MAKINOSUPP     |";
-            //PO += DateTime.Now.ToString("yyMMdd") + "|";
-            //PO += DateTime.Now.ToString("HHmm");
-            //PO += "|U|00401|000000161|0|T|>`\r\n";
-            //PO += "GS|PO|MASINGAPOREMEQ|MAKINOSUPP|";
-            //PO += "20" + DateTime.Now.ToString("yyMMdd") + "|";
-            //PO += DateTime.Now.ToString("HHmm");
-            //PO += "|47|X|004010`\r\n";
-            //PO += "ST|850|0047`\r\n";
+            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, OriginatorBox.SelectedItem.ToString(), 850));  
             
-            
+            // Makino Specific //
+            ////////////////////
             PO += "BEG|00|SA|";
             PO += PONumberGeneretor();
             PO += "||20" + DateTime.Now.ToString("yyMMdd") + "||AC`\r\n";
