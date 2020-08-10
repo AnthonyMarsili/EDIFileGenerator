@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace EDIFileGenerator
         public bool tax7needed;
         public int itemNumber = 12345;
 
-
+        //Constructor for generating a PO
         public Makino(String POnum, String curr, int items, String delivery, bool tax0, bool tax7) {
             POnumber = POnum;
             currency = curr;
@@ -29,13 +30,15 @@ namespace EDIFileGenerator
         { 
         }
 
+        //Function to create a Makino PO
         public String createMakinoPO() {
             String PO = "";
 
+            //Create the top envelope
             List<String> topEnvelope = new List<string>();
+            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, "Makino", 850));
 
-            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(new List<String>, "Makino", 850));
-
+            //Generate the static portion of the PO
             PO += "BEG|00|SA|";
             PO += POnumber;
             PO += "||20" + DateTime.Now.ToString("yyMMdd") + "||AC`\r\n";
@@ -57,6 +60,8 @@ namespace EDIFileGenerator
             PO += "N3|166 Gul Circle`\r\n";
             PO += "N4|Singapore||629622|SG`\r\n";
 
+
+            //Generate the PO1 loop based on selected tax amounts
             if (tax0needed && tax7needed)
             {
                 for (int i = 1; i <= numOfItems; i++)
@@ -119,6 +124,7 @@ namespace EDIFileGenerator
             return PO;
         }
 
+        //Function to generate line numbers 
         public String lineItemGenerator(int num)
         {
             String line = num + "0";
