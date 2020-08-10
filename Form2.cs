@@ -16,22 +16,16 @@ namespace EDIFileGenerator
         public Form2()
         {
             InitializeComponent();
-
-            //Initialize random number for PO number - based on "4" - month - "00" random number
             Random rnd = new Random();
             int end = rnd.Next(1000, 10000);
             Globals.poNumber = end;
-            
-            //Set initail delivery date to a week from today
             DeliveryDatePicker.Value = DateTime.Now.AddDays(7);
-            
-            //Set the originator box to be the first value
             OriginatorBox.SelectedIndex = 0;
         }
 
         public static class Globals
         {
-            //Global variables to hold the PO number and the item numbers
+            
             public static int poNumber;
             public static int itemNumber = 12345;
         }
@@ -64,142 +58,175 @@ namespace EDIFileGenerator
         }
 
         
-        //When the create PO button is clicked the PO is generated based on the selected options and the dsiplayed in the output box.
+
         private void CreatePOButton_Click(object sender, EventArgs e)
         {
-            POOutputBox.Text = "";
-            String PO = "";
-            int NumOfItems = 1;
+            POOutputBox.Text = ""; // clears PO box
+            String PO = ""; // initalizes PO string
+            
+            //int NumOfItems = 1;
+            
+            // now we get our values from the form
             String deliveryDate = "20" + DeliveryDatePicker.Value.ToString("yyMMdd");
-
-            //Creating a basic template in a list of strings for a PO that can then be modified per hub
-            string[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
-                                  "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
-                                  "ST", "850", "0047", "`",
-                                  "BEG", "00", "SA", "", "20", "", "AC", "`",
-                                  "CUR", "II", "`",
-                                  "REF", "PG","100", "`",
-                                  "REF", "PC", "1010", "`",
-                                  "REF", "BC", "1010", "`",
-                                  "REF", "ZZ", "PRODUCTION", "`",
-                                  "PER", "SU", "Test Vendor Company", "TE", "123-123-1234", "FX", "5874 5896", "`",
-                                  "PER", "BD", "Test User", "TE", "123456789", "", "", "EM", "test@redwavecommerce.com", "DF", "", "", "01", "EXW", "CI", "SINGAPORE", "`",
-                                  "ITD", "", "", "", "", "", "", "30", "", "", "" ,"", "Within 30 days due net", "`",
-                                  "N1", "SE", "Vendor Factory", "92", "0000100123", "`",
-                                  "N3", "123 Poplar Ave #54321", "`",
-                                  "N4", "SINGAPORE", "", "654321", "SG", "`",
-                                  "N1", "BT", "MAKINO ASIA PTE LTD", "92", "1010", "`",
-                                  "N3", "2 Gul Avenue", "`",
-                                  "N4", "Singapore", "", "629649", "SG", "`",
-                                  "N1", "ST", "MAKINO ASIA PTE LTD", "92", "1010", "`",
-                                  "N3", "166 Gul Circle", "`",
-                                  "N4", "Singapore", "", "629622", "SG", "`"
-
-            };
-
-            List<String> words = new List<string>(template);
-            List<String> topEnvelope = words.GetRange(0, 32);
-
-            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, OriginatorBox.SelectedItem.ToString(), 850));  
+            String POnum = PONumberGeneretor();
+            String currency;
+            int numOfItems;
             
-            // Makino Specific //
-            ////////////////////
-            PO += "BEG|00|SA|";
-            PO += PONumberGeneretor();
-            PO += "||20" + DateTime.Now.ToString("yyMMdd") + "||AC`\r\n";
-            PO += "CUR|II|";
-            //Add check for curency here
-            
+            if (NumItemsDrop.SelectedItem != null)
+            {
+                numOfItems = Int32.Parse(NumItemsDrop.SelectedItem.ToString());
+            }
+            else 
+                numOfItems = -1;
+
             if (USDRadio.Checked)
             {
-                PO += "USD";
+                currency = "USD";
             }
             else
             {
-                PO += "SGD";
-            }
-            PO += "`\r\n";
-            PO += "REF|PG|100`\r\nREF|PC|1010`\r\n";
-            PO += "REF|BC|1010`\r\nREF|ZZ|PRODUCTION`\r\n";
-            PO += "PER|SU|Test Vendor Company|TE|123-123-1234|FX|5874 5896`\r\n";
-            PO += "PER|BD|Test User|TE|123456789|||EM|test@redwavecommerce.com|DF|||01|EXW|CI|SINGAPORE`\r\n";
-            PO += "ITD|||||||30|||||Within 30 days due net`\r\n";
-            PO += "N1|SE|Vendor Factory|92|0000100123`\r\n";
-            PO += "N3|123 Poplar Ave #54321`\r\n";
-            PO += "N4|SINGAPORE||654321|SG`\r\n";
-            PO += "N1|BT|MAKINO ASIA PTE LTD|92|1010`\r\n";
-            PO += "N3|2 Gul Avenue`\r\n";
-            PO += "N4|Singapore||629649|SG`\r\n";
-            PO += "N1|ST|MAKINO ASIA PTE LTD|92|1010`\r\n";
-            PO += "N3|166 Gul Circle`\r\n";
-            PO += "N4|Singapore||629622|SG`\r\n";
-
-            if (NumItemsDrop.SelectedItem != null) {
-                NumOfItems = Int32.Parse(NumItemsDrop.SelectedItem.ToString());
+                currency = "SGD";
             }
 
-
-            if (zeroPercent.Checked && sevenPercent.Checked)
-            {
-                for (int i = 1; i <= NumOfItems; i++)
-                {
-                    if (i % 2 == 1)
-                    {
-                        PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|" + Globals.itemNumber + "`\r\n";
-                        PO += "PID|F||||DemoItem" + i + "`\r\n";
-                        PO += "TXI|P4||0|||||||GST on import-MES 0%`\r\n";
-                        PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
-                        Globals.itemNumber++;
-                    }
-                    else
-                    {
-                        PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|" + Globals.itemNumber + "`\r\n";
-                        PO += "PID|F||||DemoItem" + i + "`\r\n";
-                        PO += "TXI|P1||7|||||||Standard - rated 7 %`\r\n";
-                        PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
-                        Globals.itemNumber++;
-                    }
-                }
-            }
-            else if (sevenPercent.Checked)
-            {
-                for (int i = 1; i <= NumOfItems; i++)
-                {
-                    PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|" + Globals.itemNumber + "`\r\n";
-                    PO += "PID|F||||DemoItem" + i + "`\r\n";
-                    PO += "TXI|P1||7|||||||Standard - rated 7 %`\r\n";
-                    PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
-                    Globals.itemNumber++;
-                }
-            }
-            else if (zeroPercent.Checked)
-            {
-                for (int i = 1; i <= NumOfItems; i++)
-                {
-                    PO += "PID|F||||DemoItem" + i + "`\r\n";
-                    PO += "TXI|P4||0|||||||GST on import-MES 0%`\r\n";
-                    PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
-                    Globals.itemNumber++;
-                }
-            }
-            else
-            {
-                for (int i = 1; i <= NumOfItems; i++)
-                {
-                    PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|" + Globals.itemNumber + "`\r\n";
-                    PO += "PID|F||||DemoItem" + i + "`\r\n";
-                    PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
-                    Globals.itemNumber++;
-                }
-            }
-
-
-            PO += "CTT|" + NumOfItems.ToString() + "|" + (NumOfItems * 10).ToString() + "`\r\n";
-            PO += "SE|38|0047`\r\n";
-            PO += "GE|1|47`\r\n";
-            PO += "IEA|1|161`";
+            // now check what hub was selected
+            // the only option right now is Makino
+            // create an instance of the Makino class
+            Makino makinoPO = new Makino(POnum, currency, numOfItems, deliveryDate, zeroPercent.Checked, sevenPercent.Checked);
+            
+            PO += makinoPO.createMakinoPO(); // call the create PO function in the Makino class with the values we jsut passed in
 
             POOutputBox.Text = PO;
+
+            //string[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
+            //                      "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
+            //                      "ST", "850", "0047", "`",
+            //                      "BEG", "00", "SA", "", "20", "", "AC", "`",
+            //                      "CUR", "II", "`",
+            //                      "REF", "PG","100", "`",
+            //                      "REF", "PC", "1010", "`",
+            //                      "REF", "BC", "1010", "`",
+            //                      "REF", "ZZ", "PRODUCTION", "`",
+            //                      "PER", "SU", "Test Vendor Company", "TE", "123-123-1234", "FX", "5874 5896", "`",
+            //                      "PER", "BD", "Test User", "TE", "123456789", "", "", "EM", "test@redwavecommerce.com", "DF", "", "", "01", "EXW", "CI", "SINGAPORE", "`",
+            //                      "ITD", "", "", "", "", "", "", "30", "", "", "" ,"", "Within 30 days due net", "`",
+            //                      "N1", "SE", "Vendor Factory", "92", "0000100123", "`",
+            //                      "N3", "123 Poplar Ave #54321", "`",
+            //                      "N4", "SINGAPORE", "", "654321", "SG", "`",
+            //                      "N1", "BT", "MAKINO ASIA PTE LTD", "92", "1010", "`",
+            //                      "N3", "2 Gul Avenue", "`",
+            //                      "N4", "Singapore", "", "629649", "SG", "`",
+            //                      "N1", "ST", "MAKINO ASIA PTE LTD", "92", "1010", "`",
+            //                      "N3", "166 Gul Circle", "`",
+            //                      "N4", "Singapore", "", "629622", "SG", "`"
+
+            //};
+
+            //List<String> words = new List<string>(template);
+            //List<String> topEnvelope = words.GetRange(0, 32);
+
+            //PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, OriginatorBox.SelectedItem.ToString(), 850));
+
+
+
+            // Makino Specific //
+            ////////////////////
+            //PO += "BEG|00|SA|";
+            //PO += PONumberGeneretor();
+            //PO += "||20" + DateTime.Now.ToString("yyMMdd") + "||AC`\r\n";
+            //PO += "CUR|II|";
+            ////Add check for curency here
+
+            //if (USDRadio.Checked)
+            //{
+            //    PO += "USD";
+            //}
+            //else
+            //{
+            //    PO += "SGD";
+            //}
+            //PO += "`\r\n";
+            //PO += "REF|PG|100`\r\nREF|PC|1010`\r\n";
+            //PO += "REF|BC|1010`\r\nREF|ZZ|PRODUCTION`\r\n";
+            //PO += "PER|SU|Test Vendor Company|TE|123-123-1234|FX|5874 5896`\r\n";
+            //PO += "PER|BD|Test User|TE|123456789|||EM|test@redwavecommerce.com|DF|||01|EXW|CI|SINGAPORE`\r\n";
+            //PO += "ITD|||||||30|||||Within 30 days due net`\r\n";
+            //PO += "N1|SE|Vendor Factory|92|0000100123`\r\n";
+            //PO += "N3|123 Poplar Ave #54321`\r\n";
+            //PO += "N4|SINGAPORE||654321|SG`\r\n";
+            //PO += "N1|BT|MAKINO ASIA PTE LTD|92|1010`\r\n";
+            //PO += "N3|2 Gul Avenue`\r\n";
+            //PO += "N4|Singapore||629649|SG`\r\n";
+            //PO += "N1|ST|MAKINO ASIA PTE LTD|92|1010`\r\n";
+            //PO += "N3|166 Gul Circle`\r\n";
+            //PO += "N4|Singapore||629622|SG`\r\n";
+
+            //if (NumItemsDrop.SelectedItem != null) {
+            //    NumOfItems = Int32.Parse(NumItemsDrop.SelectedItem.ToString());
+            //}
+            //// else NumOfItems = -1;
+
+
+            //if (zeroPercent.Checked && sevenPercent.Checked)
+            //{
+            //    for (int i = 1; i <= NumOfItems; i++)
+            //    {
+            //        if (i % 2 == 1)
+            //        {
+            //            PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|" + Globals.itemNumber + "`\r\n";
+            //            PO += "PID|F||||DemoItem" + i + "`\r\n";
+            //            PO += "TXI|P4||0|||||||GST on import-MES 0%`\r\n";
+            //            PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
+            //            Globals.itemNumber++;
+            //        }
+            //        else
+            //        {
+            //            PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|" + Globals.itemNumber + "`\r\n";
+            //            PO += "PID|F||||DemoItem" + i + "`\r\n";
+            //            PO += "TXI|P1||7|||||||Standard - rated 7 %`\r\n";
+            //            PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
+            //            Globals.itemNumber++;
+            //        }
+            //    }
+            //}
+            //else if (sevenPercent.Checked)
+            //{
+            //    for (int i = 1; i <= NumOfItems; i++)
+            //    {
+            //        PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|" + Globals.itemNumber + "`\r\n";
+            //        PO += "PID|F||||DemoItem" + i + "`\r\n";
+            //        PO += "TXI|P1||7|||||||Standard - rated 7 %`\r\n";
+            //        PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
+            //        Globals.itemNumber++;
+            //    }
+            //}
+            //else if (zeroPercent.Checked)
+            //{
+            //    for (int i = 1; i <= NumOfItems; i++)
+            //    {
+            //        PO += "PID|F||||DemoItem" + i + "`\r\n";
+            //        PO += "TXI|P4||0|||||||GST on import-MES 0%`\r\n";
+            //        PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
+            //        Globals.itemNumber++;
+            //    }
+            //}
+            //else
+            //{
+            //    for (int i = 1; i <= NumOfItems; i++)
+            //    {
+            //        PO += "PO1|" + lineItemGenerator(i) + "|10|ST|100.99||BP|" + Globals.itemNumber + "`\r\n";
+            //        PO += "PID|F||||DemoItem" + i + "`\r\n";
+            //        PO += "SCH|10|EA|POA|POA|017|" + deliveryDate + "||002|" + deliveryDate + "`\r\n";
+            //        Globals.itemNumber++;
+            //    }
+            //}
+
+
+            //PO += "CTT|" + NumOfItems.ToString() + "|" + (NumOfItems * 10).ToString() + "`\r\n";
+            //PO += "SE|38|0047`\r\n";
+            //PO += "GE|1|47`\r\n";
+            //PO += "IEA|1|161`";
+
+            //POOutputBox.Text = PO;
 
         }
 
@@ -223,14 +250,14 @@ namespace EDIFileGenerator
             return poNum;
         }
 
-       public String lineItemGenerator(int num)
-        {
-            String line = num + "0";
-            while (line.Length < 5){
-                line = "0" + line;
-            }
-            return line;
-        }
+       //public String lineItemGenerator(int num)
+       // {
+       //     String line = num + "0";
+       //     while (line.Length < 5){
+       //         line = "0" + line;
+       //     }
+       //     return line;
+       // }
 
         private void BackToMenu_Click(object sender, EventArgs e)
         {
