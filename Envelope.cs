@@ -23,6 +23,11 @@ namespace EDIFileGenerator
                 receiver = "MAKINOSUPP";
             }
 
+            String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
+                                  "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
+                                  "ST", "850", "0047", "`",
+                                };
+
             //Generate top envelope for RC
             if (type == 856)
             {

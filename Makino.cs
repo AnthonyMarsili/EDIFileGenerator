@@ -15,28 +15,7 @@ namespace EDIFileGenerator
         public bool tax0needed;
         public bool tax7needed;
         public int itemNumber = 12345;
-        public String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
-                                     "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
-                                     "ST", "850", "0047", "`",
-                                     "BEG", "00", "SA", "", "20", "", "AC", "`",
-                                     "CUR", "II", "`",
-                                     "REF", "PG","100", "`",
-                                     "REF", "PC", "1010", "`",
-                                     "REF", "BC", "1010", "`",
-                                     "REF", "ZZ", "PRODUCTION", "`",
-                                     "PER", "SU", "Test Vendor Company", "TE", "123-123-1234", "FX", "5874 5896", "`",
-                                     "PER", "BD", "Test User", "TE", "123456789", "", "", "EM", "test@redwavecommerce.com", "DF", "", "", "01", "EXW", "CI", "SINGAPORE", "`",
-                                     "ITD", "", "", "", "", "", "", "30", "", "", "" ,"", "Within 30 days due net", "`",
-                                     "N1", "SE", "Vendor Factory", "92", "0000100123", "`",
-                                     "N3", "123 Poplar Ave #54321", "`",
-                                     "N4", "SINGAPORE", "", "654321", "SG", "`",
-                                     "N1", "BT", "MAKINO ASIA PTE LTD", "92", "1010", "`",
-                                     "N3", "2 Gul Avenue", "`",
-                                     "N4", "Singapore", "", "629649", "SG", "`",
-                                     "N1", "ST", "MAKINO ASIA PTE LTD", "92", "1010", "`",
-                                     "N3", "166 Gul Circle", "`",
-                                     "N4", "Singapore", "", "629622", "SG", "`"
-                                };
+
 
         public Makino(String POnum, String curr, int items, String delivery, bool tax0, bool tax7) {
             POnumber = POnum;
@@ -53,8 +32,7 @@ namespace EDIFileGenerator
         public String createMakinoPO() {
             String PO = "";
 
-            List<String> words = new List<string>(template);
-            List<String> topEnvelope = words.GetRange(0, 32);
+            List<String> topEnvelope = new List<string>(template);
 
             PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, "Makino", 850));
 
