@@ -59,7 +59,11 @@ namespace EDIFileGenerator
             {
                 if (inputList[1] == "~" || inputList[1] == "`")
                 {
-                    output += inputList[0] + "~\r\n";
+                    if (inputList[1] == "~") 
+                        output += inputList[0] + "~\r\n";
+                    else
+                        output += inputList[0] + "`\r\n";
+
                     inputList.RemoveAt(0);
                     inputList.RemoveAt(0);
                     counter++;

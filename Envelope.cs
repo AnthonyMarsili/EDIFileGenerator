@@ -59,23 +59,34 @@ namespace EDIFileGenerator
             }
             else if (type == 850)
             {
-                envelope[6] = sender;
+                // GS Sender and Receiver
+                envelope[20] = sender;
+                envelope[21] = receiver;
+
+                // ISA Sender and Receiver
                 while (receiver.Length < 16)
                 {
                     receiver += " ";
                 }
                 envelope[8] = receiver;
-                envelope[20] = sender;
-                envelope[21] = receiver;
 
+                while (sender.Length < 16) 
+                {
+                    sender += " ";
+                }
+                envelope[6] = sender;
+
+                // Dates
                 String today = DateTime.Now.ToString("yyMMdd");
                 envelope[9] = today;
                 envelope[22] = "20" + today;
 
+                // Times
                 String time = DateTime.Now.ToString("HHmm");
                 envelope[10] = time;
                 envelope[23] = time;
 
+                // reconstruct top envelope
                 for (int i = 0; i < 32; i++)
                 {
                     result.Add(envelope[i]);
