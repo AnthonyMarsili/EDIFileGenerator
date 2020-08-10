@@ -8,6 +8,7 @@ namespace EDIFileGenerator
 {
     class StringModifiers
     {
+        //Reformats a list of strings into EDI format. Sets new lines based on delimiters in the list
         public static List<String> WholeTextParse(String text)
         {
             List<String> words = new List<String>();

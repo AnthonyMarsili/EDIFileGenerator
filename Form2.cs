@@ -16,16 +16,22 @@ namespace EDIFileGenerator
         public Form2()
         {
             InitializeComponent();
+
+            //Initialize random number for PO number - based on "4" - month - "00" random number
             Random rnd = new Random();
             int end = rnd.Next(1000, 10000);
             Globals.poNumber = end;
+            
+            //Set initail delivery date to a week from today
             DeliveryDatePicker.Value = DateTime.Now.AddDays(7);
+            
+            //Set the originator box to be the first value
             OriginatorBox.SelectedIndex = 0;
         }
 
         public static class Globals
         {
-            
+            //Global variables to hold the PO number and the item numbers
             public static int poNumber;
             public static int itemNumber = 12345;
         }
@@ -58,13 +64,15 @@ namespace EDIFileGenerator
         }
 
         
-
+        //When the create PO button is clicked the PO is generated based on the selected options and the dsiplayed in the output box.
         private void CreatePOButton_Click(object sender, EventArgs e)
         {
             POOutputBox.Text = "";
             String PO = "";
             int NumOfItems = 1;
             String deliveryDate = "20" + DeliveryDatePicker.Value.ToString("yyMMdd");
+
+            //Creating a basic template in a list of strings for a PO that can then be modified per hub
             string[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
                                   "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
                                   "ST", "850", "0047", "`",

@@ -10,16 +10,20 @@ namespace EDIFileGenerator
 {
     class Envelope
     {
+        //Function to create the top envelope for all document types 
         public static List<String> TopEnvelope(List<String> envelope, String Company, int type) {
             List<String> result = new List<String>();
             String sender = "";
             String receiver = "";
+
+            //Set the proper sender and reciever based on which hub is selected
             if (Company == "Makino")
             {
                 sender = "MASINGAPOREMEQ";
                 receiver = "MAKINOSUPP";
             }
 
+            //Generate top envelope for RC
             if (type == 856)
             {
                 // swaps sender and receiver on ISA and GS
@@ -57,6 +61,7 @@ namespace EDIFileGenerator
 
                 return result;
             }
+            //Genereate top envelope for PO
             else if (type == 850)
             {
                 // GS Sender and Receiver
