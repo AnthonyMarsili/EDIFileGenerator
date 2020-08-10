@@ -11,7 +11,8 @@ namespace EDIFileGenerator
     class Envelope
     {
         //Function to create the top envelope for all document types 
-        public static List<String> TopEnvelope(List<String> envelope, String Company, int type) {
+        public static List<String> TopEnvelope(List<String> envelope, String Company, int type)
+        {
             List<String> result = new List<String>();
             String sender = "";
             String receiver = "";
@@ -23,10 +24,6 @@ namespace EDIFileGenerator
                 receiver = "MAKINOSUPP";
             }
 
-            String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
-                                  "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
-                                  "ST", "850", "0047", "`",
-                                };
 
             //Generate top envelope for RC
             if (type == 856)
@@ -58,7 +55,7 @@ namespace EDIFileGenerator
                 {
                     result.Add(envelope[i]);
                 }
-                
+
                 // storing values for bottom envelope
                 result.Add(envelope[30]); // SE02
                 result.Add(envelope[24]); // GE02
@@ -69,6 +66,12 @@ namespace EDIFileGenerator
             //Genereate top envelope for PO
             else if (type == 850)
             {
+                //Template for PO
+                String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
+                                  "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
+                                  "ST", "850", "0047", "`",
+                                };
+                envelope = new List<string>(template);
                 // GS Sender and Receiver
                 envelope[20] = sender;
                 envelope[21] = receiver;
@@ -80,7 +83,7 @@ namespace EDIFileGenerator
                 }
                 envelope[8] = receiver;
 
-                while (sender.Length < 16) 
+                while (sender.Length < 16)
                 {
                     sender += " ";
                 }
@@ -109,5 +112,5 @@ namespace EDIFileGenerator
                 return result;
             }
         }
-}
+    }
 }

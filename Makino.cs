@@ -32,9 +32,9 @@ namespace EDIFileGenerator
         public String createMakinoPO() {
             String PO = "";
 
-            List<String> topEnvelope = new List<string>(template);
+            List<String> topEnvelope = new List<string>();
 
-            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, "Makino", 850));
+            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(new List<String>, "Makino", 850));
 
             PO += "BEG|00|SA|";
             PO += POnumber;
