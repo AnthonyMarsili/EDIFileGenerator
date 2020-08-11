@@ -16,6 +16,8 @@ namespace EDIFileGenerator
         public Form2()
         {
             InitializeComponent();
+
+            //Initialize the initial PO number and delivery date
             Random rnd = new Random();
             int end = rnd.Next(1000, 10000);
             Globals.poNumber = end;
@@ -30,49 +32,25 @@ namespace EDIFileGenerator
             public static int itemNumber = 12345;
         }
 
-        private String PutBackTogether(List<String> inputList)
-        {
-            //Put all the words back together with proper delimiters 
-            String output = "";
-            int counter = 0;
-            int length = inputList.Count;
-            while (counter < length)
-            {
-                if (inputList[1] == "~" || inputList[1] == "`")
-                {
-                    output += inputList[0] + "~\r\n";
-                    inputList.RemoveAt(0);
-                    inputList.RemoveAt(0);
-                    counter++;
-                    counter++;
-                }
-                else
-                {
-                    output += inputList[0];
-                    output += "*";
-                    inputList.RemoveAt(0);
-                    counter++;
-                }
-            }
-            return output;
-        }
 
         private void CreatePOButton_Click(object sender, EventArgs e)
         {
             POOutputBox.Text = ""; // clears PO box
             String PO = ""; // initalizes PO string
             
-            // now we get our values from the form
+            //Collect the values from the form
             String deliveryDate = "20" + DeliveryDatePicker.Value.ToString("yyMMdd");
             String POnum = PONumberGeneretor();
             String currency;
             int numOfItems;
             
+            //Get the number of requested lines else set it to one
             if (NumItemsDrop.SelectedItem != null)
                 numOfItems = Int32.Parse(NumItemsDrop.SelectedItem.ToString());
             else 
-                numOfItems = -1;
+                numOfItems = 1;
 
+            //Get the currency
             if (USDRadio.Checked)
                 currency = "USD";
             else
@@ -92,15 +70,16 @@ namespace EDIFileGenerator
             POOutputBox.Text = PO;
         }
 
+        //Fucntion to generate a semi-random PO number
         public String PONumberGeneretor()
         {
             String poNum = "";
             String initials = InitialsTextBox.Text;
             
-
+            //Set leading initials as TST if no initials are entered
             if (initials == "E.G. TST")
             {
-                poNum += "TST" + DateTime.Now.ToString("MM") + "00" + Globals.poNumber.ToString();
+                poNum += "TST" + "4" +  DateTime.Now.ToString("MM") + "00" + Globals.poNumber.ToString();
             }
             else
             {
@@ -112,6 +91,7 @@ namespace EDIFileGenerator
             return poNum;
         }
 
+        //Function to take user back to Form 1
         private void BackToMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -119,6 +99,7 @@ namespace EDIFileGenerator
             mainMenu.Show();
         }
 
+        //Funtion to clear text box if original text is present otherwise highlight full text for easy typing
         private void InitialsTextBox_Click(object sender, EventArgs eventArgs)
         {
             if (InitialsTextBox.Text == "E.G. TST")
@@ -133,11 +114,13 @@ namespace EDIFileGenerator
             }
         }
 
+        //Copy current text in output box to clipboard
         private void POCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(POOutputBox.Text);
         }
 
+        //Clear the output box as well as all the form options
         private void Clear_Click(object sender, EventArgs e)
         {
             POOutputBox.Text = "";
@@ -151,6 +134,7 @@ namespace EDIFileGenerator
 
         }
 
+        //Close all forms on application close
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

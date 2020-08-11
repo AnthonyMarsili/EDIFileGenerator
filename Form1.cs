@@ -17,6 +17,7 @@ namespace EDIFileGenerator
             InitializeComponent();
         }
 
+        //Button to move to the PO genereator
         private void PoBtnMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -24,6 +25,7 @@ namespace EDIFileGenerator
             POGenerator.Show();
         }
 
+        //Button to move to the ASN-RC converter
         private void ConvertBtnMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -31,6 +33,7 @@ namespace EDIFileGenerator
             ASNtoRCConverter.Show();
         }
 
+        //Function to close all forms when application is closed
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
