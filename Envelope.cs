@@ -23,6 +23,11 @@ namespace EDIFileGenerator
                 sender = "MASINGAPOREMEQ";
                 receiver = "MAKINOSUPP";
             }
+            else if(Company == "Pet Valu")
+            {
+                sender = "PETVALU";
+                receiver = "SPANGELPET";
+            }
 
 
             //Generate top envelope for RC
@@ -99,6 +104,12 @@ namespace EDIFileGenerator
                 envelope[10] = time;
                 envelope[23] = time;
 
+                if (Company == "Pet Valu")
+                {
+                    envelope[11] = "|";
+                    envelope[16] = ":";
+                }
+
                 // reconstruct top envelope
                 for (int i = 0; i < 32; i++)
                 {
@@ -111,6 +122,14 @@ namespace EDIFileGenerator
             {
                 return result;
             }
+        }
+
+        //Make this the overloaded funciton for PO's 
+        public static List<String> TopEnvelope(String Company, int type)
+        {
+            List<String> result = new List<String>();
+
+            return result;
         }
     }
 }

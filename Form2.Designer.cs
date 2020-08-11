@@ -176,8 +176,9 @@
             this.OriginatorBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.OriginatorBox.FormattingEnabled = true;
             this.OriginatorBox.Items.AddRange(new object[] {
-            "Makino"});
-            this.OriginatorBox.Location = new System.Drawing.Point(280, 26);
+            "Makino",
+            "Pet Valu"});
+            this.OriginatorBox.Location = new System.Drawing.Point(280, 25);
             this.OriginatorBox.Name = "OriginatorBox";
             this.OriginatorBox.Size = new System.Drawing.Size(271, 24);
             this.OriginatorBox.TabIndex = 0;
@@ -350,7 +351,7 @@
             "50",
             "100",
             "125"});
-            this.NumItemsDrop.Location = new System.Drawing.Point(280, 253);
+            this.NumItemsDrop.Location = new System.Drawing.Point(280, 254);
             this.NumItemsDrop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumItemsDrop.Name = "NumItemsDrop";
             this.NumItemsDrop.Size = new System.Drawing.Size(271, 24);
