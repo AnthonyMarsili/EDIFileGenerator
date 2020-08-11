@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,13 +14,19 @@ namespace EDIFileGenerator
         public String currency;
         public int numOfItems;
         public String deliveryDate;
+        public bool headerAllowance;
+        public bool headerCharge;
+        public String[] headerSACvalues = new String[3];
         public int itemNumber = 12345;
-        public PetValu(String POnum, String curr, int items, String delivery)
+        public PetValu(String POnum, String curr, int items, String delivery, bool PVheaderAllowance, bool PVheaderCharge, String[] headerSACvals)
         {
             POnumber = POnum;
             currency = curr;
             numOfItems = items;
             deliveryDate = delivery;
+            headerAllowance = PVheaderAllowance;
+            headerCharge = PVheaderCharge;
+            headerSACvalues = headerSACvals;
         }
 
         public String CreatePetValuPO()
@@ -40,6 +48,24 @@ namespace EDIFileGenerator
             PO += "PER * DC * Tom Doe* TE*555 - 555 - 5555 * EM * test@test.com~\r\n";
             PO += "PER * SU * Test Supplier* TE*555 - 555 - 5555 * EM * test@test.com~\r\n";
 
+
+            if (headerAllowance) // these need to be radio buttons
+            {
+                PO += "A*";
+            }
+            else if (headerCharge) {
+                PO += "C*";
+            }
+
+            // headerSACvalues: [code, amount, percentage] -- the one that doesn't exitst between amt and per will be -1
+            
+            PO += headerSACvalues[0] + "***"; // the allowance/charge code
+            
+            if (headerSACvalues[1] != "-1") {
+                PO += headerSACvalues[1] + "~\r\n";
+            }
+            else 
+                PO += "3*" + headerSACvalues[2] + "~\r\n";
 
             return PO;
         }

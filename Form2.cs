@@ -66,6 +66,21 @@ namespace EDIFileGenerator
 
                 PO += makinoPO.createMakinoPO(); // call the create PO function in the Makino class with the values we jsut passed in
             }
+            else if (OriginatorBox.SelectedItem.ToString() == "Pet Valu") 
+            {
+                String[] headerSAClist = new String[3];
+                headerSAClist[0] = headerSACcodeDrop.SelectedItem.ToString();
+                if (headerSACdropdown.SelectedItem.ToString() == "Amount")
+                {
+                    headerSAClist[1] = SACNumberPicker.Value.ToString();
+                    headerSAClist[2] = "-1";
+                }
+                else if (headerSACdropdown.SelectedItem.ToString() == "Percent") 
+                {
+                    headerSAClist[1] = "-1";
+                    headerSAClist[2] = SACNumberPicker.Value.ToString();
+                }
+            }
 
             POOutputBox.Text = PO;
         }
@@ -138,6 +153,36 @@ namespace EDIFileGenerator
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void OriginatorBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (OriginatorBox.SelectedItem.ToString() != "Pet Valu") // need a seperate if clause for the attributes specific to each hub
+            {
+                tableLayoutPanel6.Enabled = false;
+            }
+            else
+            {
+                tableLayoutPanel6.Enabled = true;
+            }
+
+            if (OriginatorBox.SelectedItem.ToString() != "Makino")
+            {
+                tableLayoutPanel3.Enabled = false;
+                SGDRadioBtn.Enabled = false;
+            }
+            else 
+            {
+                tableLayoutPanel3.Enabled = true;
+                SGDRadioBtn.Enabled = true;
+            }
+        }
+        private void headerSACdropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (headerSACdropdown.SelectedItem.ToString() == "Percent")
+                SACNumberPicker.Maximum = 100;
+            else
+                SACNumberPicker.Maximum = 10000;
         }
     }
 }
