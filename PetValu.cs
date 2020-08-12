@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EDIFileGenerator
 {
@@ -17,8 +18,13 @@ namespace EDIFileGenerator
         public bool headerAllowance;
         public bool headerCharge;
         public String[] headerSACvalues = new String[3];
+        public bool ITDneeded;
+        public String ITDpercent;
         public int itemNumber = 12345;
-        public PetValu(String POnum, String curr, int items, String delivery, bool PVheaderAllowance, bool PVheaderCharge, String[] headerSACvals)
+
+        //constructor for creating a Pet Valu PO
+        public PetValu(String POnum, String curr, int items, String delivery, bool PVheaderAllowance, 
+            bool PVheaderCharge, String[] headerSACvals, bool PVITDneeded, String PVITDpercent)
         {
             POnumber = POnum;
             currency = curr;
@@ -27,6 +33,13 @@ namespace EDIFileGenerator
             headerAllowance = PVheaderAllowance;
             headerCharge = PVheaderCharge;
             headerSACvalues = headerSACvals;
+            ITDneeded = PVITDneeded;
+            ITDpercent = PVITDpercent;
+        }
+
+        //constructor for doing other things with PetValu
+        public PetValu() { 
+        
         }
 
         public String CreatePetValuPO()
@@ -66,6 +79,11 @@ namespace EDIFileGenerator
             }
             else 
                 PO += "3*" + headerSACvalues[2] + "~\r\n";
+
+            if (ITDneeded)
+            {
+                PO += "ITD*08*15*" + ITDpercent + "**10**30*****Sample Discount~\r\n";
+            }
 
             return PO;
         }

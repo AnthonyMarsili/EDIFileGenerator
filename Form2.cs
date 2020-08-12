@@ -80,6 +80,10 @@ namespace EDIFileGenerator
                     headerSAClist[1] = "-1";
                     headerSAClist[2] = SACNumberPicker.Value.ToString();
                 }
+
+                PetValu petvaluPO = new PetValu(POnum, currency, numOfItems, deliveryDate, headerAllowanceRadio.Checked, HeaderChargeRadio.Checked, headerSAClist, ITDneeded.Checked, ITDpercentPicker.Value.ToString());
+
+                PO += petvaluPO.CreatePetValuPO();
             }
 
             POOutputBox.Text = PO;
@@ -146,7 +150,6 @@ namespace EDIFileGenerator
             DeliveryDatePicker.Value = DateTime.Now.AddDays(7);
             zeroPercent.Checked = false;
             sevenPercent.Checked = false;
-
         }
 
         //Close all forms on application close
@@ -160,10 +163,12 @@ namespace EDIFileGenerator
             if (OriginatorBox.SelectedItem.ToString() != "Pet Valu") // need a seperate if clause for the attributes specific to each hub
             {
                 tableLayoutPanel6.Enabled = false;
+                tableLayoutPanel10.Enabled = false;
             }
             else
             {
                 tableLayoutPanel6.Enabled = true;
+                tableLayoutPanel10.Enabled = true;
             }
 
             if (OriginatorBox.SelectedItem.ToString() != "Makino")
@@ -183,6 +188,14 @@ namespace EDIFileGenerator
                 SACNumberPicker.Maximum = 100;
             else
                 SACNumberPicker.Maximum = 10000;
+        }
+
+        private void ITDneeded_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ITDneeded.Checked)
+                ITDpercentPicker.Enabled = false;
+            else
+                ITDpercentPicker.Enabled = true;
         }
     }
 }
