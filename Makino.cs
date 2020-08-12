@@ -18,11 +18,11 @@ namespace EDIFileGenerator
         public int itemNumber = 12345;
 
         //Constructor for generating a PO
-        public Makino(String POnum, String curr, int items, String delivery, bool tax0, bool tax7) {
+        public Makino(String POnum, String curr, int items, DateTime delivery, bool tax0, bool tax7) {
             POnumber = POnum;
             currency = curr;
             numOfItems = items;
-            deliveryDate = delivery;
+            deliveryDate = "20" + delivery.ToString("yyMMdd");
             tax0needed = tax0;
             tax7needed = tax7;
         }
@@ -37,6 +37,8 @@ namespace EDIFileGenerator
             //Create the top envelope
             List<String> topEnvelope = new List<string>();
             PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, "Makino", 850));
+
+
 
             //Generate the static portion of the PO
             PO += "BEG|00|SA|";

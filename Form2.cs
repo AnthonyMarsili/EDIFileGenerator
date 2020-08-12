@@ -39,7 +39,6 @@ namespace EDIFileGenerator
             String PO = ""; // initalizes PO string
             
             //Collect the values from the form
-            String deliveryDate = "20" + DeliveryDatePicker.Value.ToString("yyMMdd");
             String POnum = PONumberGeneretor();
             String currency;
             int numOfItems;
@@ -62,7 +61,7 @@ namespace EDIFileGenerator
             // create an instance of the Makino class
             if (OriginatorBox.SelectedItem.ToString() == "Makino")
             {
-                Makino makinoPO = new Makino(POnum, currency, numOfItems, deliveryDate, zeroPercent.Checked, sevenPercent.Checked);
+                Makino makinoPO = new Makino(POnum, currency, numOfItems, DeliveryDatePicker.Value, zeroPercent.Checked, sevenPercent.Checked);
 
                 PO += makinoPO.createMakinoPO(); // call the create PO function in the Makino class with the values we jsut passed in
             }
@@ -81,7 +80,7 @@ namespace EDIFileGenerator
                     headerSAClist[2] = SACNumberPicker.Value.ToString();
                 }
 
-                PetValu petvaluPO = new PetValu(POnum, currency, numOfItems, deliveryDate, headerAllowanceRadio.Checked, HeaderChargeRadio.Checked, headerSAClist, ITDneeded.Checked, ITDpercentPicker.Value.ToString());
+                PetValu petvaluPO = new PetValu(POnum, currency, numOfItems, DeliveryDatePicker.Value, headerAllowanceRadio.Checked, HeaderChargeRadio.Checked, headerSAClist, ITDneeded.Checked, ITDpercentPicker.Value.ToString());
 
                 PO += petvaluPO.CreatePetValuPO();
             }
