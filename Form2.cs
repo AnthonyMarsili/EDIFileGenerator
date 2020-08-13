@@ -147,7 +147,11 @@ namespace EDIFileGenerator
         //Copy current text in output box to clipboard
         private void POCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(POOutputBox.Text);
+            //Check that the box is not empty
+            if (POOutputBox.Text == "")
+                Clipboard.SetText(" ");
+            else
+                Clipboard.SetText(POOutputBox.Text);
         }
 
         //Clear the output box as well as all the form options

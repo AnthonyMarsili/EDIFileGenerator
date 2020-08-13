@@ -45,6 +45,7 @@ namespace EDIFileGenerator
         public String CreatePetValuPO()
         {
             String PO = "";
+            int productID = 111111111;
 
             //Blank top envelope for function parameter. If can overload funciton please fix this
             List<String> topEnvelope = new List<string>();
@@ -75,14 +76,16 @@ namespace EDIFileGenerator
                 // headerSACvalues: [code, amount, percentage] -- the one that doesn't exitst between amt and per will be -1
                 // unless the user doesnt wants a header SAC: [false, null, null]
 
-                PO += headerSACvalues[0] + "***"; // the allowance/charge code
+                PO += headerSACvalues[0].Substring(0,4) + "***"; // the allowance/charge code
 
-                if (headerSACvalues[1] != "-1")
+                if (headerSACvalues[1] != "-1")  
                 {
-                    PO += headerSACvalues[1] + "~\r\n";
+                    PO += headerSACvalues[1]; //Does this nees a *3** at the end?
                 }
                 else
-                    PO += "3*" + headerSACvalues[2] + "~\r\n";
+                    PO += "3*" + headerSACvalues[2]; // is this missing an * in front of the 3? 
+
+                PO += "********Discount\r\n";
             }
 
             if (ITDneeded)
@@ -108,6 +111,45 @@ namespace EDIFileGenerator
             PO += "N3*123 Test Street*Address2~\r\n";
             PO += "N3*Address 3*Address 4~\r\n";
             PO += "N4*Omaha*NE*68007*US~\r\n";
+
+            for (int i = 1; i <= numOfItems; i++)
+            {
+                PO += "PO1*" + i + "*5*EA" + i + ".99**BP*BPN" + i + i + i + "*VN*VPN" + i + i + i + "*UP*" + productID++ + "~\r\n";
+                PO += "CTP********" + (i * (i + 0.99)) + "~\r\n";
+                PO += "PID*F*08***Test Item Description " + i + "~\r\n";
+                PO += "PO4*5****G*2*LB*2*IN~\r\n";
+                if (headerSACvalues[0] != "false")
+                {
+                    if (headerAllowance) // these need to be radio buttons
+                    {
+                        PO += "SAC*A*";
+                    }
+                    else if (headerCharge)
+                    {
+                        PO += "SAC*C*";
+                    }
+
+                    // headerSACvalues: [code, amount, percentage] -- the one that doesn't exitst between amt and per will be -1
+                    // unless the user doesnt wants a header SAC: [false, null, null]
+
+                    PO += headerSACvalues[0].Substring(0,4) + "***"; // the allowance/charge code
+
+                    if (headerSACvalues[1] != "-1")
+                    {
+                        PO += headerSACvalues[1] + "~\r\n"; //Does this nees a *3** at the end?
+                    }
+                    else
+                        PO += "3*" + headerSACvalues[2] + "~\r\n"; // is this missing an * in front of the 3?
+                }
+
+            }
+
+            PO += "CTT*" + numOfItems + "~\r\n";
+
+            PO += "SE|38|0047`\r\n";
+            PO += "GE|1|47`\r\n";
+            PO += "IEA|1|161`";
+
 
             return PO;
         }

@@ -108,6 +108,7 @@ namespace EDIFileGenerator
                 {
                     envelope[11] = "|";
                     envelope[16] = ":";
+                    envelope[26] = "005010";
                 }
 
                 // reconstruct top envelope
