@@ -73,6 +73,7 @@
             this.POOptionsLabel = new System.Windows.Forms.Label();
             this.POCopy = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.HeaderSACNone = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -194,9 +195,9 @@
             this.tableLayoutPanel2.RowCount = 8;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.73913F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.91304F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.565217F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -214,13 +215,13 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.Controls.Add(this.ITDneeded, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel11, 1, 0);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(314, 286);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(314, 305);
             this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(306, 67);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(306, 51);
             this.tableLayoutPanel10.TabIndex = 17;
             // 
             // ITDneeded
@@ -230,7 +231,7 @@
             this.ITDneeded.Location = new System.Drawing.Point(28, 4);
             this.ITDneeded.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ITDneeded.Name = "ITDneeded";
-            this.ITDneeded.Size = new System.Drawing.Size(96, 59);
+            this.ITDneeded.Size = new System.Drawing.Size(96, 43);
             this.ITDneeded.TabIndex = 0;
             this.ITDneeded.Text = "Include?";
             this.ITDneeded.UseVisualStyleBackColor = true;
@@ -248,7 +249,7 @@
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(147, 61);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(147, 45);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // ITDpercentPicker
@@ -256,7 +257,7 @@
             this.ITDpercentPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ITDpercentPicker.DecimalPlaces = 2;
             this.ITDpercentPicker.Enabled = false;
-            this.ITDpercentPicker.Location = new System.Drawing.Point(39, 17);
+            this.ITDpercentPicker.Location = new System.Drawing.Point(39, 9);
             this.ITDpercentPicker.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -273,7 +274,7 @@
             this.ITDpercentLabel.AutoSize = true;
             this.ITDpercentLabel.Location = new System.Drawing.Point(6, 0);
             this.ITDpercentLabel.Name = "ITDpercentLabel";
-            this.ITDpercentLabel.Size = new System.Drawing.Size(23, 61);
+            this.ITDpercentLabel.Size = new System.Drawing.Size(23, 45);
             this.ITDpercentLabel.TabIndex = 2;
             this.ITDpercentLabel.Text = "%";
             this.ITDpercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -282,9 +283,9 @@
             // 
             this.headerSAClabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.headerSAClabel.AutoSize = true;
-            this.headerSAClabel.Location = new System.Drawing.Point(104, 213);
+            this.headerSAClabel.Location = new System.Drawing.Point(104, 200);
             this.headerSAClabel.Name = "headerSAClabel";
-            this.headerSAClabel.Size = new System.Drawing.Size(103, 71);
+            this.headerSAClabel.Size = new System.Drawing.Size(103, 103);
             this.headerSAClabel.TabIndex = 14;
             this.headerSAClabel.Text = "Header SAC:";
             this.headerSAClabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -298,7 +299,7 @@
             this.OriginatorBox.Items.AddRange(new object[] {
             "Makino",
             "Pet Valu"});
-            this.OriginatorBox.Location = new System.Drawing.Point(314, 21);
+            this.OriginatorBox.Location = new System.Drawing.Point(314, 22);
             this.OriginatorBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OriginatorBox.Name = "OriginatorBox";
             this.OriginatorBox.Size = new System.Drawing.Size(306, 28);
@@ -309,9 +310,9 @@
             // 
             this.InitialsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.InitialsLabel.AutoSize = true;
-            this.InitialsLabel.Location = new System.Drawing.Point(126, 71);
+            this.InitialsLabel.Location = new System.Drawing.Point(126, 72);
             this.InitialsLabel.Name = "InitialsLabel";
-            this.InitialsLabel.Size = new System.Drawing.Size(58, 71);
+            this.InitialsLabel.Size = new System.Drawing.Size(58, 72);
             this.InitialsLabel.TabIndex = 0;
             this.InitialsLabel.Text = "Initials:";
             this.InitialsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -320,9 +321,9 @@
             // 
             this.CurrencyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.CurrencyLabel.AutoSize = true;
-            this.CurrencyLabel.Location = new System.Drawing.Point(117, 142);
+            this.CurrencyLabel.Location = new System.Drawing.Point(117, 144);
             this.CurrencyLabel.Name = "CurrencyLabel";
-            this.CurrencyLabel.Size = new System.Drawing.Size(76, 71);
+            this.CurrencyLabel.Size = new System.Drawing.Size(76, 56);
             this.CurrencyLabel.TabIndex = 1;
             this.CurrencyLabel.Text = "Currency:";
             this.CurrencyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -333,7 +334,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(103, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 71);
+            this.label1.Size = new System.Drawing.Size(104, 72);
             this.label1.TabIndex = 13;
             this.label1.Text = "PO Originator";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -344,7 +345,7 @@
             this.InitialsTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.InitialsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InitialsTextBox.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.InitialsTextBox.Location = new System.Drawing.Point(314, 93);
+            this.InitialsTextBox.Location = new System.Drawing.Point(314, 95);
             this.InitialsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.InitialsTextBox.Name = "InitialsTextBox";
             this.InitialsTextBox.Size = new System.Drawing.Size(306, 26);
@@ -356,9 +357,9 @@
             // 
             this.TaxTypesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.TaxTypesLabel.AutoSize = true;
-            this.TaxTypesLabel.Location = new System.Drawing.Point(113, 497);
+            this.TaxTypesLabel.Location = new System.Drawing.Point(113, 502);
             this.TaxTypesLabel.Name = "TaxTypesLabel";
-            this.TaxTypesLabel.Size = new System.Drawing.Size(84, 78);
+            this.TaxTypesLabel.Size = new System.Drawing.Size(84, 73);
             this.TaxTypesLabel.TabIndex = 3;
             this.TaxTypesLabel.Text = "Tax Types:";
             this.TaxTypesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -373,13 +374,13 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.zeroPercent, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.sevenPercent, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(314, 499);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(314, 504);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(306, 74);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(306, 69);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // zeroPercent
@@ -389,7 +390,7 @@
             this.zeroPercent.Location = new System.Drawing.Point(47, 4);
             this.zeroPercent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.zeroPercent.Name = "zeroPercent";
-            this.zeroPercent.Size = new System.Drawing.Size(58, 66);
+            this.zeroPercent.Size = new System.Drawing.Size(58, 61);
             this.zeroPercent.TabIndex = 0;
             this.zeroPercent.Text = "0%";
             this.zeroPercent.UseVisualStyleBackColor = true;
@@ -401,7 +402,7 @@
             this.sevenPercent.Location = new System.Drawing.Point(200, 4);
             this.sevenPercent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sevenPercent.Name = "sevenPercent";
-            this.sevenPercent.Size = new System.Drawing.Size(58, 66);
+            this.sevenPercent.Size = new System.Drawing.Size(58, 61);
             this.sevenPercent.TabIndex = 1;
             this.sevenPercent.Text = "7%";
             this.sevenPercent.UseVisualStyleBackColor = true;
@@ -415,19 +416,19 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.DeliveryDatePicker, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(314, 428);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(314, 432);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(306, 67);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(306, 68);
             this.tableLayoutPanel4.TabIndex = 12;
             // 
             // DeliveryDatePicker
             // 
             this.DeliveryDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeliveryDatePicker.Location = new System.Drawing.Point(3, 20);
+            this.DeliveryDatePicker.Location = new System.Drawing.Point(3, 21);
             this.DeliveryDatePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DeliveryDatePicker.Name = "DeliveryDatePicker";
             this.DeliveryDatePicker.Size = new System.Drawing.Size(300, 26);
@@ -453,7 +454,7 @@
             "50",
             "100",
             "125"});
-            this.NumItemsDrop.Location = new System.Drawing.Point(314, 376);
+            this.NumItemsDrop.Location = new System.Drawing.Point(314, 380);
             this.NumItemsDrop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumItemsDrop.Name = "NumItemsDrop";
             this.NumItemsDrop.Size = new System.Drawing.Size(306, 28);
@@ -469,13 +470,13 @@
             this.CurrencyTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.CurrencyTable.Controls.Add(this.SGDRadioBtn, 1, 0);
             this.CurrencyTable.Controls.Add(this.USDRadio, 0, 0);
-            this.CurrencyTable.Location = new System.Drawing.Point(314, 144);
+            this.CurrencyTable.Location = new System.Drawing.Point(314, 146);
             this.CurrencyTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CurrencyTable.Name = "CurrencyTable";
             this.CurrencyTable.RowCount = 1;
             this.CurrencyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.CurrencyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.CurrencyTable.Size = new System.Drawing.Size(306, 67);
+            this.CurrencyTable.Size = new System.Drawing.Size(306, 52);
             this.CurrencyTable.TabIndex = 9;
             // 
             // SGDRadioBtn
@@ -483,7 +484,7 @@
             this.SGDRadioBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.SGDRadioBtn.AutoSize = true;
             this.SGDRadioBtn.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.SGDRadioBtn.Location = new System.Drawing.Point(156, 11);
+            this.SGDRadioBtn.Location = new System.Drawing.Point(156, 4);
             this.SGDRadioBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SGDRadioBtn.Name = "SGDRadioBtn";
             this.SGDRadioBtn.Size = new System.Drawing.Size(147, 44);
@@ -498,7 +499,7 @@
             this.USDRadio.AutoSize = true;
             this.USDRadio.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.USDRadio.Checked = true;
-            this.USDRadio.Location = new System.Drawing.Point(3, 11);
+            this.USDRadio.Location = new System.Drawing.Point(3, 4);
             this.USDRadio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.USDRadio.Name = "USDRadio";
             this.USDRadio.Size = new System.Drawing.Size(147, 44);
@@ -518,28 +519,29 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.11111F));
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel8, 1, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(314, 216);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(314, 203);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(306, 65);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(306, 97);
             this.tableLayoutPanel6.TabIndex = 15;
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Controls.Add(this.HeaderSACNone, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.headerAllowanceRadio, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.HeaderChargeRadio, 0, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(113, 59);
+            this.tableLayoutPanel7.RowCount = 3;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(113, 91);
             this.tableLayoutPanel7.TabIndex = 16;
             // 
             // headerAllowanceRadio
@@ -550,7 +552,7 @@
             this.headerAllowanceRadio.AutoSize = true;
             this.headerAllowanceRadio.Location = new System.Drawing.Point(3, 3);
             this.headerAllowanceRadio.Name = "headerAllowanceRadio";
-            this.headerAllowanceRadio.Size = new System.Drawing.Size(107, 23);
+            this.headerAllowanceRadio.Size = new System.Drawing.Size(107, 24);
             this.headerAllowanceRadio.TabIndex = 4;
             this.headerAllowanceRadio.TabStop = true;
             this.headerAllowanceRadio.Text = "Allowance";
@@ -563,7 +565,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HeaderChargeRadio.AutoSize = true;
-            this.HeaderChargeRadio.Location = new System.Drawing.Point(3, 32);
+            this.HeaderChargeRadio.Location = new System.Drawing.Point(3, 33);
             this.HeaderChargeRadio.Name = "HeaderChargeRadio";
             this.HeaderChargeRadio.Size = new System.Drawing.Size(107, 24);
             this.HeaderChargeRadio.TabIndex = 5;
@@ -587,18 +589,19 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(181, 59);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(181, 91);
             this.tableLayoutPanel8.TabIndex = 17;
             // 
             // headerSACdropdown
             // 
             this.headerSACdropdown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.headerSACdropdown.DisplayMember = "Amount";
             this.headerSACdropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.headerSACdropdown.FormattingEnabled = true;
             this.headerSACdropdown.Items.AddRange(new object[] {
             "Amount",
             "Percent"});
-            this.headerSACdropdown.Location = new System.Drawing.Point(3, 15);
+            this.headerSACdropdown.Location = new System.Drawing.Point(3, 31);
             this.headerSACdropdown.Name = "headerSACdropdown";
             this.headerSACdropdown.Size = new System.Drawing.Size(89, 28);
             this.headerSACdropdown.TabIndex = 11;
@@ -619,14 +622,14 @@
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(80, 53);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(80, 85);
             this.tableLayoutPanel9.TabIndex = 11;
             // 
             // SACNumberPicker
             // 
             this.SACNumberPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.SACNumberPicker.DecimalPlaces = 2;
-            this.SACNumberPicker.Location = new System.Drawing.Point(3, 3);
+            this.SACNumberPicker.Location = new System.Drawing.Point(3, 8);
             this.SACNumberPicker.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -651,7 +654,7 @@
             "F800 Promotional Allowance",
             "H010 Special Buy",
             "I170 Trade Discount"});
-            this.headerSACcodeDrop.Location = new System.Drawing.Point(3, 29);
+            this.headerSACcodeDrop.Location = new System.Drawing.Point(3, 45);
             this.headerSACcodeDrop.Name = "headerSACcodeDrop";
             this.headerSACcodeDrop.Size = new System.Drawing.Size(74, 28);
             this.headerSACcodeDrop.TabIndex = 1;
@@ -660,9 +663,9 @@
             // 
             this.DeliveryDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.DeliveryDateLabel.AutoSize = true;
-            this.DeliveryDateLabel.Location = new System.Drawing.Point(102, 426);
+            this.DeliveryDateLabel.Location = new System.Drawing.Point(102, 430);
             this.DeliveryDateLabel.Name = "DeliveryDateLabel";
-            this.DeliveryDateLabel.Size = new System.Drawing.Size(107, 71);
+            this.DeliveryDateLabel.Size = new System.Drawing.Size(107, 72);
             this.DeliveryDateLabel.TabIndex = 5;
             this.DeliveryDateLabel.Text = "Delivery Date:";
             this.DeliveryDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -671,9 +674,9 @@
             // 
             this.NumLinesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.NumLinesLabel.AutoSize = true;
-            this.NumLinesLabel.Location = new System.Drawing.Point(95, 355);
+            this.NumLinesLabel.Location = new System.Drawing.Point(95, 358);
             this.NumLinesLabel.Name = "NumLinesLabel";
-            this.NumLinesLabel.Size = new System.Drawing.Size(120, 71);
+            this.NumLinesLabel.Size = new System.Drawing.Size(120, 72);
             this.NumLinesLabel.TabIndex = 2;
             this.NumLinesLabel.Text = "Numer of Lines:";
             this.NumLinesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -682,9 +685,9 @@
             // 
             this.ITDlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.ITDlabel.AutoSize = true;
-            this.ITDlabel.Location = new System.Drawing.Point(99, 284);
+            this.ITDlabel.Location = new System.Drawing.Point(99, 303);
             this.ITDlabel.Name = "ITDlabel";
-            this.ITDlabel.Size = new System.Drawing.Size(112, 71);
+            this.ITDlabel.Size = new System.Drawing.Size(112, 55);
             this.ITDlabel.TabIndex = 16;
             this.ITDlabel.Text = "ITD (Discount)";
             this.ITDlabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -742,6 +745,22 @@
             this.POCopy.Text = "Copy";
             this.POCopy.UseVisualStyleBackColor = true;
             this.POCopy.Click += new System.EventHandler(this.POCopy_Click);
+            // 
+            // HeaderSACNone
+            // 
+            this.HeaderSACNone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HeaderSACNone.AutoSize = true;
+            this.HeaderSACNone.Location = new System.Drawing.Point(3, 63);
+            this.HeaderSACNone.Name = "HeaderSACNone";
+            this.HeaderSACNone.Size = new System.Drawing.Size(107, 25);
+            this.HeaderSACNone.TabIndex = 6;
+            this.HeaderSACNone.TabStop = true;
+            this.HeaderSACNone.Text = "None";
+            this.HeaderSACNone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.HeaderSACNone.UseVisualStyleBackColor = true;
+            this.HeaderSACNone.CheckedChanged += new System.EventHandler(this.HeaderSACNone_CheckedChanged);
             // 
             // Form2
             // 
@@ -827,5 +846,6 @@
         private System.Windows.Forms.NumericUpDown ITDpercentPicker;
         private System.Windows.Forms.Label ITDpercentLabel;
         private System.Windows.Forms.Label ITDlabel;
+        private System.Windows.Forms.RadioButton HeaderSACNone;
     }
 }

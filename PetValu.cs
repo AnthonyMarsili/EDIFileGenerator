@@ -61,23 +61,29 @@ namespace EDIFileGenerator
             PO += "PER*DC*Tom Doe*TE*555-555-5555*EM*test@test.com~\r\n";
             PO += "PER*SU*Test Supplier*TE*555-555-5555*EM*test@test.com~\r\n";
 
-            if (headerAllowance) // these need to be radio buttons
+            if (headerSACvalues[0] != "false")
             {
-                PO += "SAC*A*";
-            }
-            else if (headerCharge) {
-                PO += "SAC*C*";
-            }
+                if (headerAllowance) // these need to be radio buttons
+                {
+                    PO += "SAC*A*";
+                }
+                else if (headerCharge)
+                {
+                    PO += "SAC*C*";
+                }
 
-            // headerSACvalues: [code, amount, percentage] -- the one that doesn't exitst between amt and per will be -1
-            
-            PO += headerSACvalues[0] + "***"; // the allowance/charge code
-            
-            if (headerSACvalues[1] != "-1") {
-                PO += headerSACvalues[1] + "~\r\n";
+                // headerSACvalues: [code, amount, percentage] -- the one that doesn't exitst between amt and per will be -1
+                // unless the user doesnt wants a header SAC: [false, null, null]
+
+                PO += headerSACvalues[0] + "***"; // the allowance/charge code
+
+                if (headerSACvalues[1] != "-1")
+                {
+                    PO += headerSACvalues[1] + "~\r\n";
+                }
+                else
+                    PO += "3*" + headerSACvalues[2] + "~\r\n";
             }
-            else 
-                PO += "3*" + headerSACvalues[2] + "~\r\n";
 
             if (ITDneeded)
             {

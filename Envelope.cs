@@ -25,7 +25,7 @@ namespace EDIFileGenerator
             }
             else if(Company == "Pet Valu")
             {
-                sender = "PETVALU";
+                sender = "TST1PETRETAILBR";
                 receiver = "SPANGELPET";
             }
 

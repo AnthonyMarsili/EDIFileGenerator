@@ -67,18 +67,7 @@ namespace EDIFileGenerator
             }
             else if (OriginatorBox.SelectedItem.ToString() == "Pet Valu") 
             {
-                String[] headerSAClist = new String[3];
-                headerSAClist[0] = headerSACcodeDrop.SelectedItem.ToString();
-                if (headerSACdropdown.SelectedItem.ToString() == "Amount")
-                {
-                    headerSAClist[1] = SACNumberPicker.Value.ToString();
-                    headerSAClist[2] = "-1";
-                }
-                else if (headerSACdropdown.SelectedItem.ToString() == "Percent") 
-                {
-                    headerSAClist[1] = "-1";
-                    headerSAClist[2] = SACNumberPicker.Value.ToString();
-                }
+                String[] headerSAClist = buildHeaderSAC();
 
                 PetValu petvaluPO = new PetValu(POnum, currency, numOfItems, DeliveryDatePicker.Value, headerAllowanceRadio.Checked, HeaderChargeRadio.Checked, headerSAClist, ITDneeded.Checked, ITDpercentPicker.Value.ToString());
 
@@ -96,17 +85,40 @@ namespace EDIFileGenerator
             
             //Set leading initials as TST if no initials are entered
             if (initials == "E.G. TST")
-            {
                 poNum += "TST" + "4" +  DateTime.Now.ToString("MM") + "00" + Globals.poNumber.ToString();
-            }
             else
-            {
                 poNum += initials + "4" + DateTime.Now.ToString("MM") + "00" + Globals.poNumber.ToString();
-            }
 
             Globals.poNumber++;
 
             return poNum;
+        }
+
+        public String[] buildHeaderSAC() {
+            String[] headerSAClist = new string[3];
+            
+            if (HeaderSACNone.Checked)
+                headerSAClist[0] = "false";
+            else
+            {
+                if(headerSACcodeDrop.SelectedIndex > -1)
+                    headerSAClist[0] = headerSACcodeDrop.SelectedItem.ToString();
+
+                if (headerSACdropdown.SelectedIndex > -1)
+                {
+                    if (headerSACdropdown.SelectedItem.ToString() == "Amount")
+                    {
+                        headerSAClist[1] = SACNumberPicker.Value.ToString();
+                        headerSAClist[2] = "-1";
+                    }
+                    else if (headerSACdropdown.SelectedItem.ToString() == "Percent")
+                    {
+                        headerSAClist[1] = "-1";
+                        headerSAClist[2] = SACNumberPicker.Value.ToString();
+                    }
+                }
+            }
+            return headerSAClist;
         }
 
         //Function to take user back to Form 1
@@ -195,6 +207,14 @@ namespace EDIFileGenerator
                 ITDpercentPicker.Enabled = false;
             else
                 ITDpercentPicker.Enabled = true;
+        }
+
+        private void HeaderSACNone_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HeaderSACNone.Checked)
+                tableLayoutPanel8.Enabled = false;
+            else
+                tableLayoutPanel8.Enabled = true;
         }
     }
 }
