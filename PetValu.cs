@@ -78,11 +78,11 @@ namespace EDIFileGenerator
 
                 PO += headerSACvalues[0].Substring(0,4) + "***"; // the allowance/charge code
 
-                if (headerSACvalues[1] != "-1")  
+                if (headerSACvalues[1] != "-1")  // they want an amount
                 {
                     PO += headerSACvalues[1]; //Does this nees a *3** at the end?
                 }
-                else
+                else // they want a percent
                     PO += "3*" + headerSACvalues[2]; // is this missing an * in front of the 3? 
 
                 PO += "********Discount\r\n";
@@ -146,9 +146,9 @@ namespace EDIFileGenerator
 
             PO += "CTT*" + numOfItems + "~\r\n";
 
-            PO += "SE|38|0047`\r\n";
-            PO += "GE|1|47`\r\n";
-            PO += "IEA|1|161`";
+            PO += "SE|38|0047~\r\n";
+            PO += "GE|1|47~\r\n";
+            PO += "IEA|1|161~";
 
 
             return PO;
