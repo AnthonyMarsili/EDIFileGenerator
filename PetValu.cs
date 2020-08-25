@@ -76,14 +76,27 @@ namespace EDIFileGenerator
                 // headerSACvalues: [code, amount, percentage] -- the one that doesn't exitst between amt and per will be -1
                 // unless the user doesnt wants a header SAC: [false, null, null]
 
-                PO += headerSACvalues[0].Substring(0,4) + "***"; // the allowance/charge code
-
-                if (headerSACvalues[1] != "-1")  // they want an amount
+                if(headerSACvalues[0] == "none") 
                 {
-                    PO += headerSACvalues[1]; //Does this nees a *3** at the end?
+                    PO = "Please enter values in all required SAC fields.";
+                    return PO;
                 }
-                else // they want a percent
-                    PO += "3*" + headerSACvalues[2]; // is this missing an * in front of the 3? 
+                else
+                    PO += headerSACvalues[0].Substring(0, 4) + "***"; // the allowance/charge code
+
+                if (headerSACvalues[2] == "-1")  // they want an amount
+                {
+                    int decimalLocation = headerSACvalues[1].Length - 3;
+                    headerSACvalues[1] = headerSACvalues[1].Remove(decimalLocation, 1);
+                    PO += headerSACvalues[1] + "*3**";
+                }
+                else if (headerSACvalues[1] == "-1") // they want a percent
+                    PO += "*3*" + headerSACvalues[2];
+                else
+                {
+                    PO = "Please enter values in all required SAC fields.";
+                    return PO;
+                }
 
                 PO += "********Discount\r\n";
             }
@@ -118,30 +131,7 @@ namespace EDIFileGenerator
                 PO += "CTP********" + (i * (i + 0.99)) + "~\r\n";
                 PO += "PID*F*08***Test Item Description " + i + "~\r\n";
                 PO += "PO4*5****G*2*LB*2*IN~\r\n";
-                if (headerSACvalues[0] != "false")
-                {
-                    if (headerAllowance) // these need to be radio buttons
-                    {
-                        PO += "SAC*A*";
-                    }
-                    else if (headerCharge)
-                    {
-                        PO += "SAC*C*";
-                    }
-
-                    // headerSACvalues: [code, amount, percentage] -- the one that doesn't exitst between amt and per will be -1
-                    // unless the user doesnt wants a header SAC: [false, null, null]
-
-                    PO += headerSACvalues[0].Substring(0,4) + "***"; // the allowance/charge code
-
-                    if (headerSACvalues[1] != "-1")
-                    {
-                        PO += headerSACvalues[1] + "~\r\n"; //Does this nees a *3** at the end?
-                    }
-                    else
-                        PO += "3*" + headerSACvalues[2] + "~\r\n"; // is this missing an * in front of the 3?
-                }
-
+       
             }
 
             PO += "CTT*" + numOfItems + "~\r\n";
