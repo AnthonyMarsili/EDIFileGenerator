@@ -101,22 +101,30 @@ namespace EDIFileGenerator
                 headerSAClist[0] = "false";
             else
             {
-                if(headerSACcodeDrop.SelectedIndex > -1)
-                    headerSAClist[0] = headerSACcodeDrop.SelectedItem.ToString();
+                if (headerSACcodeDrop.SelectedIndex > -1) // if they pick a code
+                    headerSAClist[0] = headerSACcodeDrop.SelectedItem.ToString(); // put that code into 0
+                else
+                    headerSAClist[0] = "none"; // if they dont pick a code, put "none" into 0
 
-                if (headerSACdropdown.SelectedIndex > -1)
+                if (headerSACdropdown.SelectedIndex > -1) // if they choose a type
                 {
-                    if (headerSACdropdown.SelectedItem.ToString() == "Amount")
+                    if (headerSACdropdown.SelectedItem.ToString() == "Amount") // if the type is amount
                     {
-                        headerSAClist[1] = SACNumberPicker.Value.ToString();
-                        headerSAClist[2] = "-1";
+                        headerSAClist[1] = SACNumberPicker.Value.ToString("0.00"); // put the number with 2 decimals into 1
+                        headerSAClist[2] = "-1"; // put -1 into 2
                     }
                     else if (headerSACdropdown.SelectedItem.ToString() == "Percent")
                     {
                         headerSAClist[1] = "-1";
-                        headerSAClist[2] = SACNumberPicker.Value.ToString();
+                        headerSAClist[2] = SACNumberPicker.Value.ToString("0.0");
                     }
                 }
+                else // if they do not choose a type. still need to initalize index 1 and 2
+                {
+                    headerSAClist[1] = "false";
+                    headerSAClist[2] = "false";
+                }
+                
             }
             return headerSAClist;
         }
@@ -165,6 +173,12 @@ namespace EDIFileGenerator
             DeliveryDatePicker.Value = DateTime.Now.AddDays(7);
             zeroPercent.Checked = false;
             sevenPercent.Checked = false;
+            HeaderSACNone.Checked = true;
+            headerSACdropdown.SelectedIndex = -1;
+            SACNumberPicker.Value = 0;
+            headerSACcodeDrop.SelectedIndex = -1;
+            ITDneeded.Checked = false;
+            ITDpercentPicker.Value = 0;
         }
 
         //Close all forms on application close
@@ -199,10 +213,21 @@ namespace EDIFileGenerator
         }
         private void headerSACdropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (headerSACdropdown.SelectedItem.ToString() == "Percent")
-                SACNumberPicker.Maximum = 100;
-            else
-                SACNumberPicker.Maximum = 10000;
+            if (headerSACdropdown.SelectedIndex > -1) // to account for when we clear this selection
+            {
+                if (headerSACdropdown.SelectedItem.ToString() == "Percent")
+                {
+                    SACNumberPicker.Maximum = 100;
+                    SACNumberPicker.DecimalPlaces = 1;
+                    SACNumberPicker.Value = 0;
+                }
+                else
+                {
+                    SACNumberPicker.Maximum = 10000;
+                    SACNumberPicker.DecimalPlaces = 2;
+                    SACNumberPicker.Value = 0;
+                }
+            }
         }
 
         private void ITDneeded_CheckedChanged(object sender, EventArgs e)

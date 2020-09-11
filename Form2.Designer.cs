@@ -58,6 +58,7 @@
             this.USDRadio = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.HeaderSACNone = new System.Windows.Forms.RadioButton();
             this.headerAllowanceRadio = new System.Windows.Forms.RadioButton();
             this.HeaderChargeRadio = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -73,7 +74,6 @@
             this.POOptionsLabel = new System.Windows.Forms.Label();
             this.POCopy = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.HeaderSACNone = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -220,7 +220,7 @@
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(306, 51);
             this.tableLayoutPanel10.TabIndex = 17;
             // 
@@ -248,7 +248,7 @@
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(147, 45);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
@@ -379,7 +379,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(306, 69);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
@@ -421,7 +421,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(306, 68);
             this.tableLayoutPanel4.TabIndex = 12;
             // 
@@ -475,7 +475,7 @@
             this.CurrencyTable.Name = "CurrencyTable";
             this.CurrencyTable.RowCount = 1;
             this.CurrencyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CurrencyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.CurrencyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.CurrencyTable.Size = new System.Drawing.Size(306, 52);
             this.CurrencyTable.TabIndex = 9;
             // 
@@ -523,7 +523,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(306, 97);
             this.tableLayoutPanel6.TabIndex = 15;
             // 
@@ -544,6 +544,23 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(113, 91);
             this.tableLayoutPanel7.TabIndex = 16;
             // 
+            // HeaderSACNone
+            // 
+            this.HeaderSACNone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HeaderSACNone.AutoSize = true;
+            this.HeaderSACNone.Checked = true;
+            this.HeaderSACNone.Location = new System.Drawing.Point(3, 63);
+            this.HeaderSACNone.Name = "HeaderSACNone";
+            this.HeaderSACNone.Size = new System.Drawing.Size(107, 25);
+            this.HeaderSACNone.TabIndex = 6;
+            this.HeaderSACNone.TabStop = true;
+            this.HeaderSACNone.Text = "None";
+            this.HeaderSACNone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.HeaderSACNone.UseVisualStyleBackColor = true;
+            this.HeaderSACNone.CheckedChanged += new System.EventHandler(this.HeaderSACNone_CheckedChanged);
+            // 
             // headerAllowanceRadio
             // 
             this.headerAllowanceRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -554,7 +571,6 @@
             this.headerAllowanceRadio.Name = "headerAllowanceRadio";
             this.headerAllowanceRadio.Size = new System.Drawing.Size(107, 24);
             this.headerAllowanceRadio.TabIndex = 4;
-            this.headerAllowanceRadio.TabStop = true;
             this.headerAllowanceRadio.Text = "Allowance";
             this.headerAllowanceRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.headerAllowanceRadio.UseVisualStyleBackColor = true;
@@ -569,7 +585,6 @@
             this.HeaderChargeRadio.Name = "HeaderChargeRadio";
             this.HeaderChargeRadio.Size = new System.Drawing.Size(107, 24);
             this.HeaderChargeRadio.TabIndex = 5;
-            this.HeaderChargeRadio.TabStop = true;
             this.HeaderChargeRadio.Text = "Charge";
             this.HeaderChargeRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.HeaderChargeRadio.UseVisualStyleBackColor = true;
@@ -588,14 +603,14 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(181, 91);
             this.tableLayoutPanel8.TabIndex = 17;
             // 
             // headerSACdropdown
             // 
             this.headerSACdropdown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.headerSACdropdown.DisplayMember = "Amount";
+            this.headerSACdropdown.DisplayMember = "Percent";
             this.headerSACdropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.headerSACdropdown.FormattingEnabled = true;
             this.headerSACdropdown.Items.AddRange(new object[] {
@@ -745,22 +760,6 @@
             this.POCopy.Text = "Copy";
             this.POCopy.UseVisualStyleBackColor = true;
             this.POCopy.Click += new System.EventHandler(this.POCopy_Click);
-            // 
-            // HeaderSACNone
-            // 
-            this.HeaderSACNone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.HeaderSACNone.AutoSize = true;
-            this.HeaderSACNone.Location = new System.Drawing.Point(3, 63);
-            this.HeaderSACNone.Name = "HeaderSACNone";
-            this.HeaderSACNone.Size = new System.Drawing.Size(107, 25);
-            this.HeaderSACNone.TabIndex = 6;
-            this.HeaderSACNone.TabStop = true;
-            this.HeaderSACNone.Text = "None";
-            this.HeaderSACNone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.HeaderSACNone.UseVisualStyleBackColor = true;
-            this.HeaderSACNone.CheckedChanged += new System.EventHandler(this.HeaderSACNone_CheckedChanged);
             // 
             // Form2
             // 

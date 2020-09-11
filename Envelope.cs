@@ -71,12 +71,24 @@ namespace EDIFileGenerator
             //Genereate top envelope for PO
             else if (type == 850)
             {
-                //Template for PO
-                String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
+                // there are different templates for different Hub's. Difference is the EOL delimeters and v4010 vs v5010
+                if (Company == "Makino")
+                {
+                    String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
                                   "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
                                   "ST", "850", "0047", "`",
                                 };
-                envelope = new List<string>(template);
+                    envelope = new List<string>(template);
+                }
+                else if (Company == "Pet Valu")
+                {
+                    String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "|", "00501", "000000161", "0", "T", ">", "~",
+                                  "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "005010", "~",
+                                  "ST", "850", "0047", "~",
+                                };
+                    envelope = new List<string>(template);
+                }
+                
                 // GS Sender and Receiver
                 envelope[20] = sender;
                 envelope[21] = receiver;
