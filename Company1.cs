@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EDIFileGenerator
 {
-    class Makino
+    class Company1
     {
         public String POnumber;
         public String currency;
@@ -18,7 +18,7 @@ namespace EDIFileGenerator
         public int itemNumber = 12345;
 
         //Constructor for generating a PO
-        public Makino(String POnum, String curr, int items, DateTime delivery, bool tax0, bool tax7) {
+        public Company1(String POnum, String curr, int items, DateTime delivery, bool tax0, bool tax7) {
             POnumber = POnum;
             currency = curr;
             numOfItems = items;
@@ -26,17 +26,17 @@ namespace EDIFileGenerator
             tax0needed = tax0;
             tax7needed = tax7;
         }
-        public Makino() // another constructor than can be used for doing other Makino things like conversions
+        public Company1() // another constructor than can be used for doing other Company 1 things like conversions
         { 
         }
 
-        //Function to create a Makino PO
-        public String createMakinoPO() {
+        //Function to create a Company 1 PO
+        public String createCompany1PO() {
             String PO = "";
 
             //Create the top envelope
             List<String> topEnvelope = new List<string>();
-            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, "Makino", 850));
+            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, "Company 1", 850));
 
 
 
@@ -50,17 +50,17 @@ namespace EDIFileGenerator
             PO += "REF|PG|100`\r\nREF|PC|1010`\r\n";
             PO += "REF|BC|1010`\r\nREF|ZZ|PRODUCTION`\r\n";
             PO += "PER|SU|Test Vendor Company|TE|123-123-1234|FX|5874 5896`\r\n";
-            PO += "PER|BD|Test User|TE|123456789|||EM|test@redwavecommerce.com|DF|||01|EXW|CI|SINGAPORE`\r\n";
+            PO += "PER|BD|Test User|TE|123456789|||EM|test@testEmail.com|DF|||01|EXW|CI|SINGAPORE`\r\n";
             PO += "ITD|||||||30|||||Within 30 days due net`\r\n";
             PO += "N1|SE|Vendor Factory|92|0000100123`\r\n";
-            PO += "N3|123 Poplar Ave #54321`\r\n";
-            PO += "N4|SINGAPORE||654321|SG`\r\n";
-            PO += "N1|BT|MAKINO ASIA PTE LTD|92|1010`\r\n";
-            PO += "N3|2 Gul Avenue`\r\n";
-            PO += "N4|Singapore||629649|SG`\r\n";
-            PO += "N1|ST|MAKINO ASIA PTE LTD|92|1010`\r\n";
-            PO += "N3|166 Gul Circle`\r\n";
-            PO += "N4|Singapore||629622|SG`\r\n";
+            PO += "N3|123 Test Ave #54321`\r\n";
+            PO += "N4|SINGAPORE||12345|SG`\r\n";
+            PO += "N1|BT|Company 1|92|1010`\r\n";
+            PO += "N3|2 Test Avenue`\r\n";
+            PO += "N4|Singapore||123456|SG`\r\n";
+            PO += "N1|ST|Company 1|92|1010`\r\n";
+            PO += "N3|166 Test Circle`\r\n";
+            PO += "N4|Singapore||123456|SG`\r\n";
 
 
             //Generate the PO1 loop based on selected tax amounts

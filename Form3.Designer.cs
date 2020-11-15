@@ -49,9 +49,9 @@
             // 
             this.ASNLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.ASNLabel.AutoSize = true;
-            this.ASNLabel.Location = new System.Drawing.Point(262, 43);
+            this.ASNLabel.Location = new System.Drawing.Point(294, 54);
             this.ASNLabel.Name = "ASNLabel";
-            this.ASNLabel.Size = new System.Drawing.Size(36, 43);
+            this.ASNLabel.Size = new System.Drawing.Size(42, 54);
             this.ASNLabel.TabIndex = 2;
             this.ASNLabel.Text = "ASN";
             this.ASNLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,19 +60,21 @@
             // 
             this.InputBox.AcceptsReturn = true;
             this.InputBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InputBox.Location = new System.Drawing.Point(3, 89);
+            this.InputBox.Location = new System.Drawing.Point(3, 112);
+            this.InputBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InputBox.Multiline = true;
             this.InputBox.Name = "InputBox";
             this.InputBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.InputBox.Size = new System.Drawing.Size(554, 408);
+            this.InputBox.Size = new System.Drawing.Size(624, 510);
             this.InputBox.TabIndex = 1;
             // 
             // ConvertButton
             // 
             this.ConvertButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.ConvertButton.Location = new System.Drawing.Point(180, 503);
+            this.ConvertButton.Location = new System.Drawing.Point(203, 630);
+            this.ConvertButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConvertButton.Name = "ConvertButton";
-            this.ConvertButton.Size = new System.Drawing.Size(199, 40);
+            this.ConvertButton.Size = new System.Drawing.Size(224, 48);
             this.ConvertButton.TabIndex = 0;
             this.ConvertButton.Text = "Convert";
             this.ConvertButton.UseVisualStyleBackColor = true;
@@ -82,9 +84,9 @@
             // 
             this.AdviceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.AdviceLabel.AutoSize = true;
-            this.AdviceLabel.Location = new System.Drawing.Point(845, 43);
+            this.AdviceLabel.Location = new System.Drawing.Point(951, 54);
             this.AdviceLabel.Name = "AdviceLabel";
-            this.AdviceLabel.Size = new System.Drawing.Size(116, 43);
+            this.AdviceLabel.Size = new System.Drawing.Size(129, 54);
             this.AdviceLabel.TabIndex = 4;
             this.AdviceLabel.Text = "Receiving Advice";
             this.AdviceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -112,16 +114,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 546);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1332, 682);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // Copy
             // 
             this.Copy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.Copy.Location = new System.Drawing.Point(843, 502);
+            this.Copy.Location = new System.Drawing.Point(948, 628);
             this.Copy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Copy.Name = "Copy";
-            this.Copy.Size = new System.Drawing.Size(120, 42);
+            this.Copy.Size = new System.Drawing.Size(135, 52);
             this.Copy.TabIndex = 5;
             this.Copy.Text = "Copy";
             this.Copy.UseVisualStyleBackColor = true;
@@ -132,12 +134,13 @@
             this.OutputBox.AcceptsReturn = true;
             this.OutputBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.OutputBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OutputBox.Location = new System.Drawing.Point(625, 89);
+            this.OutputBox.Location = new System.Drawing.Point(703, 112);
+            this.OutputBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OutputBox.Multiline = true;
             this.OutputBox.Name = "OutputBox";
             this.OutputBox.ReadOnly = true;
             this.OutputBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.OutputBox.Size = new System.Drawing.Size(556, 408);
+            this.OutputBox.Size = new System.Drawing.Size(626, 510);
             this.OutputBox.TabIndex = 3;
             // 
             // Clear
@@ -145,9 +148,10 @@
             this.Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Clear.Location = new System.Drawing.Point(563, 503);
+            this.Clear.Location = new System.Drawing.Point(633, 630);
+            this.Clear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(56, 40);
+            this.Clear.Size = new System.Drawing.Size(64, 48);
             this.Clear.TabIndex = 6;
             this.Clear.Text = "Clear";
             this.Clear.UseVisualStyleBackColor = true;
@@ -170,7 +174,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(554, 39);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(624, 50);
             this.tableLayoutPanel5.TabIndex = 10;
             // 
             // BackToMenu
@@ -180,7 +184,7 @@
             this.BackToMenu.Location = new System.Drawing.Point(3, 2);
             this.BackToMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BackToMenu.Name = "BackToMenu";
-            this.BackToMenu.Size = new System.Drawing.Size(67, 35);
+            this.BackToMenu.Size = new System.Drawing.Size(75, 46);
             this.BackToMenu.TabIndex = 8;
             this.BackToMenu.Text = "< Menu";
             this.BackToMenu.UseVisualStyleBackColor = true;
@@ -190,9 +194,9 @@
             // 
             this.OriginatorLabel.AutoSize = true;
             this.OriginatorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OriginatorLabel.Location = new System.Drawing.Point(86, 0);
+            this.OriginatorLabel.Location = new System.Drawing.Point(96, 0);
             this.OriginatorLabel.Name = "OriginatorLabel";
-            this.OriginatorLabel.Size = new System.Drawing.Size(114, 39);
+            this.OriginatorLabel.Size = new System.Drawing.Size(130, 50);
             this.OriginatorLabel.TabIndex = 9;
             this.OriginatorLabel.Text = "PO Originator:";
             this.OriginatorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -203,19 +207,21 @@
             this.OriginatorBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.OriginatorBox.FormattingEnabled = true;
             this.OriginatorBox.Items.AddRange(new object[] {
-            "Makino"});
-            this.OriginatorBox.Location = new System.Drawing.Point(206, 7);
+            "Company 1"});
+            this.OriginatorBox.Location = new System.Drawing.Point(232, 11);
+            this.OriginatorBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OriginatorBox.Name = "OriginatorBox";
-            this.OriginatorBox.Size = new System.Drawing.Size(345, 24);
+            this.OriginatorBox.Size = new System.Drawing.Size(389, 28);
             this.OriginatorBox.TabIndex = 10;
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 546);
+            this.ClientSize = new System.Drawing.Size(1332, 682);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(358, 567);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimumSize = new System.Drawing.Size(400, 695);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ASN to RC Converter";

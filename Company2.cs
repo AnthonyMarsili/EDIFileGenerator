@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace EDIFileGenerator
 {
-    class PetValu
+    class Company2
     {
         public String POnumber;
         public String currency;
@@ -22,8 +22,8 @@ namespace EDIFileGenerator
         public String ITDpercent;
         public int itemNumber = 12345;
 
-        //constructor for creating a Pet Valu PO
-        public PetValu(String POnum, String curr, int items, DateTime delivery, bool PVheaderAllowance, 
+        //constructor for creating a Company 2 PO
+        public Company2(String POnum, String curr, int items, DateTime delivery, bool PVheaderAllowance, 
             bool PVheaderCharge, String[] headerSACvals, bool PVITDneeded, String PVITDpercent)
         {
             POnumber = POnum;
@@ -37,26 +37,26 @@ namespace EDIFileGenerator
             ITDpercent = PVITDpercent;
         }
 
-        //constructor for doing other things with PetValu
-        public PetValu() { 
+        //constructor for doing other things with Company 2
+        public Company2() { 
         
         }
 
-        public String CreatePetValuPO()
+        public String CreateCompany2PO()
         {
             String PO = "";
             int productID = 111111111;
 
             //Blank top envelope for function parameter. If can overload funciton please fix this
             List<String> topEnvelope = new List<string>();
-            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, "Pet Valu", 850));
+            PO += StringModifiers.PutBackTogether(Envelope.TopEnvelope(topEnvelope, "Company 2", 850));
 
             PO += "BEG*00*SA*";
             PO += POnumber;
             PO += "**20" + DateTime.Now.ToString("yyMMdd") + "~\r\n";
             PO += "CUR*BY*USD~\r\n";
             PO += "REF*IA*ANGE01~\r\n";
-            PO += "REF*19*Pet Valu~\r\n";
+            PO += "REF*19*Company 2~\r\n";
             PO += "REF*11*4458809~\r\n";
             PO += "PER*BD*John Doe*TE*555-555-5555*EM*test@test.com~\r\n";
             PO += "PER*DC*Tom Doe*TE*555-555-5555*EM*test@test.com~\r\n";
@@ -114,16 +114,16 @@ namespace EDIFileGenerator
             PO += "TXI*GS*2~\r\n";
             PO += "N9*L1*GEN~\r\n";
             PO += "MTX**Test Note.~\r\n";
-            PO += "N1*ST*Pet Retail Brands*92*94~\r\n";
-            PO += "N2*Pet Retail Brands Testing~\r\n";
-            PO += "N3*3501 BURRIS ROAD*Suite 1000~\r\n";
+            PO += "N1*ST*Company 2*92*94~\r\n";
+            PO += "N2*Company 2~\r\n";
+            PO += "N3*3501 TEST ROAD*Suite 1000~\r\n";
             PO += "N3*1st Floor*Last door on the right~\r\n";
-            PO += "N4*DAVIE*FL*33314*US~\r\n";
+            PO += "N4*DAVIE*FL*12345*US~\r\n";
             PO += "N1*VN*Test Vendor Name*92*1234~\r\n";
             PO += "N2*Test Supplier Name~\r\n";
             PO += "N3*123 Test Street*Address2~\r\n";
             PO += "N3*Address 3*Address 4~\r\n";
-            PO += "N4*Omaha*NE*68007*US~\r\n";
+            PO += "N4*Omaha*NE*12345*US~\r\n";
 
             for (int i = 1; i <= numOfItems; i++)
             {

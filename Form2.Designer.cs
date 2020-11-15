@@ -297,8 +297,8 @@
             this.OriginatorBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.OriginatorBox.FormattingEnabled = true;
             this.OriginatorBox.Items.AddRange(new object[] {
-            "Makino",
-            "Pet Valu"});
+            "Company 1",
+            "Company 2"});
             this.OriginatorBox.Location = new System.Drawing.Point(314, 22);
             this.OriginatorBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OriginatorBox.Name = "OriginatorBox";

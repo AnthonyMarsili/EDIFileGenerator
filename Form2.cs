@@ -59,19 +59,19 @@ namespace EDIFileGenerator
             // now check what hub was selected
             // the only option right now is Makino
             // create an instance of the Makino class
-            if (OriginatorBox.SelectedItem.ToString() == "Makino")
+            if (OriginatorBox.SelectedItem.ToString() == "Company 1")
             {
-                Makino makinoPO = new Makino(POnum, currency, numOfItems, DeliveryDatePicker.Value, zeroPercent.Checked, sevenPercent.Checked);
+                Company1 company1PO = new Company1(POnum, currency, numOfItems, DeliveryDatePicker.Value, zeroPercent.Checked, sevenPercent.Checked);
 
-                PO += makinoPO.createMakinoPO(); // call the create PO function in the Makino class with the values we jsut passed in
+                PO += company1PO.createCompany1PO(); // call the create PO function in the Makino class with the values we jsut passed in
             }
-            else if (OriginatorBox.SelectedItem.ToString() == "Pet Valu") 
+            else if (OriginatorBox.SelectedItem.ToString() == "Company 2") 
             {
                 String[] headerSAClist = buildHeaderSAC();
 
-                PetValu petvaluPO = new PetValu(POnum, currency, numOfItems, DeliveryDatePicker.Value, headerAllowanceRadio.Checked, HeaderChargeRadio.Checked, headerSAClist, ITDneeded.Checked, ITDpercentPicker.Value.ToString());
+                Company2 company2PO = new Company2(POnum, currency, numOfItems, DeliveryDatePicker.Value, headerAllowanceRadio.Checked, HeaderChargeRadio.Checked, headerSAClist, ITDneeded.Checked, ITDpercentPicker.Value.ToString());
 
-                PO += petvaluPO.CreatePetValuPO();
+                PO += company2PO.CreateCompany2PO();
             }
 
             POOutputBox.Text = PO;
@@ -189,7 +189,7 @@ namespace EDIFileGenerator
 
         private void OriginatorBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (OriginatorBox.SelectedItem.ToString() != "Pet Valu") // need a seperate if clause for the attributes specific to each hub
+            if (OriginatorBox.SelectedItem.ToString() != "Company 2") // need a seperate if clause for the attributes specific to each hub
             {
                 tableLayoutPanel6.Enabled = false;
                 tableLayoutPanel10.Enabled = false;
@@ -200,7 +200,7 @@ namespace EDIFileGenerator
                 tableLayoutPanel10.Enabled = true;
             }
 
-            if (OriginatorBox.SelectedItem.ToString() != "Makino")
+            if (OriginatorBox.SelectedItem.ToString() != "Company 1")
             {
                 tableLayoutPanel3.Enabled = false;
                 SGDRadioBtn.Enabled = false;

@@ -18,15 +18,15 @@ namespace EDIFileGenerator
             String receiver = "";
 
             //Set the proper sender and reciever based on which hub is selected
-            if (Company == "Makino")
+            if (Company == "Company 1")
             {
-                sender = "MASINGAPOREMEQ";
-                receiver = "MAKINOSUPP";
+                sender = "COMPANY1SEND";
+                receiver = "COMPANY2REC";
             }
-            else if(Company == "Pet Valu")
+            else if(Company == "Company 2")
             {
-                sender = "TST1PETRETAILBR";
-                receiver = "SPANGELPET";
+                sender = "COMPANY2SENDER";
+                receiver = "COMPANY2REC";
             }
 
 
@@ -72,7 +72,7 @@ namespace EDIFileGenerator
             else if (type == 850)
             {
                 // there are different templates for different Hub's. Difference is the EOL delimeters and v4010 vs v5010
-                if (Company == "Makino")
+                if (Company == "Company 1")
                 {
                     String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "U", "00401", "000000161", "0", "T", ">", "`",
                                   "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "004010", "`",
@@ -80,7 +80,7 @@ namespace EDIFileGenerator
                                 };
                     envelope = new List<string>(template);
                 }
-                else if (Company == "Pet Valu")
+                else if (Company == "Company 2")
                 {
                     String[] template = { "ISA", "00", "          ", "00", "          ", "ZZ", "Sender", "ZZ", "Receiver", "000000", "0000", "|", "00501", "000000161", "0", "T", ">", "~",
                                   "GS", "PO", "Sender", "Receiver", "00000000", "0000", "47", "X", "005010", "~",
@@ -116,7 +116,7 @@ namespace EDIFileGenerator
                 envelope[10] = time;
                 envelope[23] = time;
 
-                if (Company == "Pet Valu")
+                if (Company == "Company 2")
                 {
                     envelope[11] = "|";
                     envelope[16] = ":";

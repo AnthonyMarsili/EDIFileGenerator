@@ -22,3 +22,15 @@ C:\Users\mars1\Documents\Career\SideProjects\EDIFileGenerator\obj\Debug\EDIFileG
 C:\Users\mars1\Documents\Career\SideProjects\EDIFileGenerator\obj\Debug\EDIFileGenerator.Form3.resources
 C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.Form3.resources
 C:\Users\nicho\Documents\GitHub\EDIFileGenerator\obj\Debug\EDIFileGenerator.Form2.resources
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.csprojAssemblyReference.cache
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.Form1.resources
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.Form3.resources
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.Form2.resources
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.Properties.Resources.resources
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.csproj.GenerateResource.cache
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.csproj.CoreCompileInputs.cache
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.exe
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\obj\Debug\EDIFileGenerator.pdb
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\bin\Debug\EDIFileGenerator.exe.config
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\bin\Debug\EDIFileGenerator.exe
+C:\Users\anthm\OneDrive\Documents\Github\EDI_File_Gen\bin\Debug\EDIFileGenerator.pdb
